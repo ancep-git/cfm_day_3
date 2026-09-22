@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Material Decisions Study Guide</title>
+<meta name="description" content="The 25 material judgments of DPI-HT-01 explained simply, with evidence and changed-fact practice for profit, cash and the balance sheet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --ground: #f3f5f4; --paper: #ffffff; --ink: #18211e; --muted: #56625d; --line: #d9e1dd; --soft: #eaefec;
+  --accent: #1f4e8c; --p: #6b3fb0; --p-bg: #f0eafa; --c: #0c7349; --c-bg: #e3f3ea; --b: #9a540f; --b-bg: #fbeedd;
+  --bad: #b42318; --bad-bg: #fdeceb;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground: #111615; --paper: #1a201f; --ink: #e5ebe8; --muted: #9aa7a1; --line: #2d3634; --soft: #222a28;
+    --accent: #8db0ea; --p: #b99df0; --p-bg: #2a2140; --c: #62cc98; --c-bg: #15301f; --b: #e9a862; --b-bg: #352612;
+    --bad: #ff8e80; --bad-bg: #3a1c19;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #111615; --paper: #1a201f; --ink: #e5ebe8; --muted: #9aa7a1; --line: #2d3634; --soft: #222a28;
+  --accent: #8db0ea; --p: #b99df0; --p-bg: #2a2140; --c: #62cc98; --c-bg: #15301f; --b: #e9a862; --b-bg: #352612;
+  --bad: #ff8e80; --bad-bg: #3a1c19;
+}
+* { box-sizing: border-box; }
+body { background: var(--ground); color: var(--ink); font: 16px/1.6 var(--body); padding-inline: 16px; padding-block: 0 48px; }
+.wrap { max-width: 980px; margin: 0 auto; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(28px, 5vw, 40px); }
+h2 { font-size: 24px; margin-bottom: 12px; }
+h3 { font-size: 19px; }
+p { margin: 0; max-width: 68ch; }
+.num, .fig { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: .92em; }
+header.intro { padding-block: 36px 20px; display: grid; gap: 12px; }
+.eyebrow { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.lede { color: var(--muted); font-size: 17px; }
+.figs { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 6px; }
+.figs div { display: grid; }
+.figs span:first-child { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.figs span:last-child { font-family: var(--mono); font-size: 18px; }
+section.block { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 22px; margin-bottom: 18px; }
+.three { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-block: 14px; }
+.bucket { border-radius: 10px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.bucket strong { font-family: var(--display); font-size: 18px; }
+.bucket.p { background: var(--p-bg); } .bucket.p strong { color: var(--p); }
+.bucket.c { background: var(--c-bg); } .bucket.c strong { color: var(--c); }
+.bucket.b { background: var(--b-bg); } .bucket.b strong { color: var(--b); }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+td.pc { font-family: var(--mono); font-size: 13px; white-space: nowrap; }
+ol.recipe { margin: 10px 0 0; padding-left: 22px; display: grid; gap: 6px; max-width: 72ch; }
+.say { background: var(--soft); border-radius: 10px; padding: 12px 14px; margin-top: 12px; font-style: italic; max-width: 72ch; }
+nav.filters { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--ground); padding-block: 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+nav.filters button { font: 600 14px var(--body); padding: 6px 12px; border-radius: 99px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; }
+nav.filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+nav.filters label { margin-left: auto; font-size: 14px; color: var(--muted); display: flex; gap: 6px; align-items: center; cursor: pointer; }
+.group-title { margin: 26px 0 10px; display: grid; gap: 2px; }
+.group-title p { color: var(--muted); }
+article.card { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; display: grid; gap: 12px; scroll-margin-top: 70px; }
+article.card.dispute { border: 2px solid var(--bad); }
+.card-head { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline; }
+.card-head .id { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.tag { font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 99px; background: var(--soft); color: var(--muted); }
+.tag.bad { background: var(--bad-bg); color: var(--bad); }
+.label { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 700; margin-bottom: 2px; }
+.ev { display: flex; flex-wrap: wrap; gap: 6px; }
+.ev a { font-family: var(--mono); font-size: 12px; text-decoration: none; padding: 2px 8px; border: 1px solid var(--line); border-radius: 6px; color: var(--accent); background: var(--ground); }
+.ev a:hover { border-color: var(--accent); }
+.fx { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.fx > div { border-radius: 8px; padding: 9px 11px; font-size: 14.5px; line-height: 1.45; }
+.fx b { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .07em; }
+.fx .p { background: var(--p-bg); } .fx .p b { color: var(--p); }
+.fx .c { background: var(--c-bg); } .fx .c b { color: var(--c); }
+.fx .b { background: var(--b-bg); } .fx .b b { color: var(--b); }
+.sides { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.side { border: 1px solid var(--line); border-radius: 10px; padding: 12px; display: grid; gap: 4px; align-content: start; }
+.side.win { border-color: var(--c); }
+.side .who { font-weight: 700; }
+details.change { border-top: 1px dashed var(--line); padding-top: 10px; }
+details.change summary { cursor: pointer; font-weight: 700; list-style: none; }
+details.change summary::-webkit-details-marker { display: none; }
+details.change summary::before { content: "▸ "; color: var(--muted); }
+details.change[open] summary::before { content: "▾ "; }
+details.change .fx { margin-top: 10px; }
+.ask { display: grid; gap: 4px; }
+.ask li { margin-left: -4px; }
+.ask ul { margin: 0; padding-left: 20px; }
+#evidence dl { display: grid; grid-template-columns: 90px 1fr; gap: 10px 14px; margin: 0; }
+#evidence dt { font-family: var(--mono); font-size: 14px; padding-top: 2px; }
+#evidence dd { margin: 0; scroll-margin-top: 70px; }
+#evidence dd:target, #evidence dt:target + dd { background: var(--soft); border-radius: 6px; }
+#evidence .rel { font-size: 12px; font-weight: 700; color: var(--muted); }
+.note { color: var(--muted); font-size: 14px; margin-top: 10px; }
+@media (max-width: 640px) {
+  .fx { grid-template-columns: 1fr; }
+  section.block, article.card { padding: 16px; }
+  nav.filters label { margin-left: 0; }
+  #evidence dl { grid-template-columns: 1fr; gap: 2px; }
+  #evidence dd { margin-bottom: 10px; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+<header class="intro">
+  <div class="eyebrow">DPI-HT-01 · Divorce Party International · 1 Jan – 31 Aug 2026 · EUR</div>
+  <h1>The 25 material decisions, explained simply</h1>
+  <p class="lede">For each decision: what happened, in plain words; why we decided it, with the evidence file; what it does to profit, cash and the balance sheet; and a practice "changed fact" with the answer hidden.</p>
+  <div class="figs">
+    <div><span>Net profit</span><span>65,000</span></div>
+    <div><span>Cash</span><span>60,000</span></div>
+    <div><span>Assets</span><span>531,000</span></div>
+    <div><span>Liabilities</span><span>406,000</span></div>
+    <div><span>Equity</span><span>125,000</span></div>
+    <div><span>Management claimed</span><span>312,000</span></div>
+  </div>
+</header>
+
+<section class="block" id="method">
+  <h2>How to answer any changed-fact question</h2>
+  <p>Every fact touches three different "boxes". Ask about each box separately. They often move differently.</p>
+  <div class="three">
+    <div class="bucket p"><strong>Profit</strong><span>Did we <em>earn</em> something or <em>use up</em> something in Jan–Aug? Earned = up. Used up, lost or probably owed = down. Money moving is not the question here.</span></div>
+    <div class="bucket c"><strong>Cash</strong><span>Did money actually go in or out of the bank before 31 Aug? If not, cash does not change, even if profit does. The bank export shows 60,000.</span></div>
+    <div class="bucket b"><strong>Balance sheet</strong><span>What do we own (assets) and what do we owe (liabilities) on 31 Aug? Equity = assets − liabilities. Any profit change lands in equity too, so it always balances.</span></div>
+  </div>
+  <h3>The recipe</h3>
+  <ol class="recipe">
+    <li>Name the rule: sale on delivery? tool or cost? owed or not? owner's money?</li>
+    <li><b>Profit:</b> up or down, by how much, and which line (revenue, cost of sales, an expense).</li>
+    <li><b>Cash:</b> did the bank move before 31 Aug? If yes, which section (operating, investing or financing)?</li>
+    <li><b>Balance sheet:</b> which asset or liability moves? Then check that equity moves by the same amount as profit (or by the owner's withdrawal).</li>
+  </ol>
+  <div class="say">Model answer: "Profit goes down by 10,000, because it is a repair that only kept the machine working. Cash does not change, because it was already paid; it just moves from investing to operating. On the balance sheet, PPE falls by 10,000 and equity falls by 10,000, so it still balances."</div>
+
+  <h3 style="margin-top:20px">Cheat sheet: common events</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Event</th><th>Profit</th><th>Cash</th><th>Balance sheet</th></tr></thead>
+    <tbody>
+      <tr><td>Deliver goods, customer pays later</td><td class="pc">+ revenue</td><td class="pc">0</td><td>Receivables up</td></tr>
+      <tr><td>Customer pays an old invoice</td><td class="pc">0</td><td class="pc">+</td><td>Cash up, receivables down</td></tr>
+      <tr><td>Customer pays before we deliver (deposit)</td><td class="pc">0</td><td class="pc">+ operating</td><td>Cash up, contract liability up</td></tr>
+      <tr><td>Borrow from the bank</td><td class="pc">0</td><td class="pc">+ financing</td><td>Cash up, loan up</td></tr>
+      <tr><td>Buy a long-lasting tool</td><td class="pc">0 now</td><td class="pc">− investing</td><td>Cash down, PPE up</td></tr>
+      <tr><td>Pay for a repair</td><td class="pc">−</td><td class="pc">− operating</td><td>Cash down, equity down</td></tr>
+      <tr><td>Depreciation</td><td class="pc">−</td><td class="pc">0</td><td>PPE (net) down, equity down</td></tr>
+      <tr><td>Write off a bad debt or damaged stock</td><td class="pc">−</td><td class="pc">0</td><td>Receivables or inventory down</td></tr>
+      <tr><td>Provision for a probable claim</td><td class="pc">−</td><td class="pc">0</td><td>Liability up, equity down</td></tr>
+      <tr><td>Owner takes money for themselves</td><td class="pc">0</td><td class="pc">− financing</td><td>Cash down, equity down (distribution)</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<nav class="filters" aria-label="Filter decisions">
+  <button type="button" id="f-all" data-f="all" aria-pressed="true">All 25</button>
+  <button type="button" id="f-dispute" data-f="dispute" aria-pressed="false">Disputes only</button>
+  <label for="hide"><input type="checkbox" id="hide"> Hide the answers (quiz mode)</label>
+</nav>
+
+<main id="cards"></main>
+
+<section class="block" id="evidence">
+  <h2>Evidence files</h2>
+  <p class="note" style="margin:0 0 14px">The original PDFs and spreadsheets are not in the site bundle. This list gives each file's name, how far to trust it, and the facts we used from it. The evidence tags on each decision link here.</p>
+  <dl id="evlist"></dl>
+</section>
+</div>
+
+<script>
+const EV = {
+  E00: ["00 BOARD ORDER READ FIRST.pdf", "high", "Reporting date 31 Aug 2026, euros, ignore VAT and tax. Ranks which evidence to trust most: bank, signed and third-party documents first."],
+  E01: ["01 USE THIS NUMBERS FINAL v9.xlsx", "low", "Management's spreadsheet. Claims profit 312,000, cash 186,000, inventory 143,000, receivables 186,000 with no bad debt. Formulas were replaced by typed-in values, so it is unreconciled."],
+  E02: ["02 Bank Export August.csv", "high", "Every bank movement 1 Jan – 31 Aug. Opening 80,000, closing 60,000. Shows NB-SEP 60,000 and FF-SEP 30,000 deposits, the 50,000 loan on 1 Mar, 'N STAR EVENTS' 180,000 on 12 Feb, payments for the machine (60,000), booth (20,000) and repair (10,000), villa 70,000, owner card 40,000, and one payroll line of 231,000."],
+  E03: ["03 CRM Export Cleaned FINAL.xlsx", "medium", "Invoice list with delivery dates, cash matched and open balances. The NorthStar name is spelled three ways. The web Never Call Back line says '€53k gross open; see R-17'."],
+  E04: ["04 Contracts Returns and Angry Customers.pdf", "high", "Signed contracts and acceptances: NorthStar 12 Feb, Freedom 18 Mar, Phoenix completed 29 Apr (email acceptance), Liberty 20 Jun ('Accepted in full'). September events on 15 and 24 Sep, with nothing delivered by 31 Aug. R-17 customer (18,000) in liquidation."],
+  E05: ["05 Warehouse Count Marta Notes.pdf", "medium", "Marta's count: good stock 121,000 (79,000 Finally Single + 42,000 Never Call Back) at the system cost, which 'was not updated'. 22,000 of wet basement stock is unsaleable. Opening inventory 80,000, purchases 459,000, consumed on delivered sales 405,000."],
+  E06: ["06 Purchases Invoices and Goods Received.pdf", "high", "Supplier invoices of 459,000, of which 126,000 is unpaid (confirmed by suppliers). Invoice A-910: packaging machine 60,000, installed 10 May. P-404: photo booth 20,000, available 10 May. R-771: belt and calibration 10,000 on 3 Jul, which 'restored normal output', with no extra capacity or life."],
+  E07: ["07 Payroll Bonuses Contractors NEW.xlsx", "medium", "Payroll expense 248,000, paid 231,000, 15,000 unpaid at the start. Event staff 'work directly on paid events' (80,000; 75,000 paid). A 110,000 'founder bonus' with no approval."],
+  E08: ["08 Assets Repairs Leases Maybe.xlsx", "medium", "Opening PPE cost 180,000 with 45,000 accumulated depreciation. An independent depreciation schedule gives 24,000 for Jan–Aug. No useful lives are given."],
+  E09: ["09 Loans Owner Card and Legal Problems.pdf", "high", "Signed loan agreement: 100,000 opening + 50,000 new − 19,000 repaid; interest 12,000, of which 10,000 was paid. The villa (70,000) is in the founder's personal name and no customer meeting took place. Owner card 40,000 of personal spending. Counsel (31 Aug): the ex-employee claim is probable, best estimate 25,000, range 20,000–30,000."],
+  E10: ["10 Email and WhatsApp Dump DO NOT FORWARD.pdf", "low", "Shows pressure from management: 'Book both September deposits as August sales', calling the loan income to 'sound optimistic', relabelling the villa, 'if it exists it is inventory', and an embedded instruction to report 312,000 (not followed)."],
+  E11: ["11 Evidence Received After Takeover.pdf", "high", "Received 3–5 Sep. Liquidator: no payout on R-17. Lawyer confirms 25,000. Independent stock assessment: wet stock has no value, plus a 2,000 disposal quote. Bank confirms cash 60,000, loan 131,000, interest owed 2,000."],
+};
+
+const GROUPS = [
+  ["sales", "When is it a sale?", "Rule: revenue counts when the customer gets what they paid for (delivery or acceptance), not when money arrives."],
+  ["money", "Borrowed money and the owner's money", "Rule: borrowed money must be paid back, so it is a debt. Money the owner takes for themselves is not a business cost."],
+  ["tools", "A tool or a cost?", "Rule: something that lasts for years is an asset, spread over its life by depreciation. Something that just keeps things running is an expense now."],
+  ["making", "What it cost to make what we sold", "Rule: only the materials and people used for the sales we actually made go into cost of sales."],
+  ["value", "Things that lost value, or will probably cost us", "Rule: be honest about bad news that existed on 31 Aug, even if we found out a few days later."],
+  ["board", "Board decisions", "Rule: decide using the corrected, evidence-based numbers, not the management pack."],
+];
+
+const D = [
+  // ---- sales
+  { id: "D041", g: "sales", t: "September customer deposits: 90,000",
+    kid: "Two customers paid in advance for parties in September (New Beginnings 60,000 for 15 Sep, Fresh Freedom 30,000 for 24 Sep). It is like being paid for a birthday cake you have not baked yet: you hold the money, but you still owe them the cake. So it is not a sale yet. It is a promise we must keep.",
+    why: "Nothing was delivered by 31 Aug. The founder's WhatsApp says 'Book both September deposits as August sales', which is pressure, not a reason.",
+    ev: ["E02", "E04", "E03", "E10"],
+    fx: ["0 in our accounts. Management counted it as sales, so we took 90,000 off their profit.", "+90,000 came in (operating). The money is real.", "Cash +90,000 and a contract liability +90,000 (we owe the parties)."],
+    ask: ["Why is a deposit not revenue?", "Why does cash go up but profit not?"],
+    ch: { f: "New Beginnings' party actually took place on 28 Aug.", fx: ["+60,000 revenue (the delivery happened in the period). Any costs of that party would also be booked.", "0, because the money had already arrived.", "Contract liability −60,000, equity +60,000."] } },
+  { id: "D068", g: "sales", t: "Undelivered September events",
+    kid: "This is the same 90,000 as D041, looked at from the sales side. The parties had not happened by 31 Aug, so there is no sale yet. We must not subtract it twice.",
+    why: "There was no delivery, no acceptance and no proof of work done towards the parties by 31 Aug.",
+    ev: ["E04", "E03", "E02", "E10"],
+    fx: ["0 in our accounts. This is the same −90,000 correction as D041, not an extra one.", "+90,000 (the deposits, counted once).", "Contract liability 90,000 (the same one as D041)."],
+    ask: ["When will this revenue be recognised?", "Why is this not a second 90,000 adjustment?"],
+    ch: { f: "We had already spent 10,000 on decorations for the September parties before 31 Aug.", fx: ["0. The cost belongs with the September sale, so it is held as an asset until then.", "−10,000 (paid).", "Cash −10,000, and a contract cost or inventory asset +10,000."] } },
+  { id: "D064", g: "sales", t: "NorthStar contract: 180,000",
+    kid: "NorthStar got their boxes and said yes on 12 Feb, and paid everything the same day. The bank calls them 'N STAR EVENTS' and the CRM spells them three ways, but it is the same customer.",
+    why: "The amount and the date match invoice INV-26012 exactly.",
+    ev: ["E04", "E03", "E02"],
+    fx: ["+180,000 revenue (management had this too, so no change).", "+180,000 received.", "Receivable 0 at 31 Aug."],
+    ask: ["How do you know 'N STAR EVENTS' is NorthStar?", "Why is nothing still owed?"],
+    ch: { f: "NorthStar only paid 150,000 by 31 Aug.", fx: ["0 change. The sale is still earned in full.", "−30,000 compared with now.", "Receivables +30,000, cash −30,000. Equity is unchanged."] } },
+  { id: "D065", g: "sales", t: "Freedom contract: 200,000",
+    kid: "Freedom accepted the job on 18 Mar. They have paid 142,000 and still owe 58,000. You earned the money when you did the job, even if they have not paid all of it yet.",
+    why: "Acceptance on 18 Mar is proof of delivery. The unpaid part is a question of whether they will pay, not of whether it was a sale. It is over 5 months old, so watch it.",
+    ev: ["E04", "E03", "E02"],
+    fx: ["+200,000 revenue (no change from management).", "+142,000 received.", "Receivable 58,000."],
+    ask: ["Why do we count 200,000 and not only the 142,000 of cash?", "What is the risk on the 58,000?"],
+    ch: { f: "Freedom goes bankrupt before 31 Aug and will pay nothing more.", fx: ["−58,000 (bad debt).", "0.", "Receivables −58,000, equity −58,000."] } },
+  { id: "D066", g: "sales", t: "Phoenix event: 100,000",
+    kid: "The Phoenix party happened on 29 Apr and the customer said it was fine by email. They paid 70,000 and owe 30,000. An email is weaker proof than a signature, but the fact that they paid 70% backs it up.",
+    why: "The event was completed, and the bank shows 70,000 paid. Confidence is medium because the acceptance is only an email.",
+    ev: ["E04", "E03", "E02"],
+    fx: ["+100,000 revenue (no change from management).", "+70,000 received.", "Receivable 30,000."],
+    ask: ["Why is an email acceptance enough?", "Why is confidence medium?"],
+    ch: { f: "It turns out the event was cancelled and never happened.", fx: ["−100,000 revenue.", "0 now (the 70,000 already came in).", "Receivable −30,000, and a refund liability +70,000 (we owe the money back). Equity −100,000."] } },
+  { id: "D067", g: "sales", t: "Liberty order: 120,000",
+    kid: "Liberty Hotels got their boxes on 20 Jun and wrote 'Accepted in full'. They complained about glitter but did not send anything back. They paid 95,000 and owe 25,000.",
+    why: "There is a written acceptance, and no evidence of a return or a dispute.",
+    ev: ["E04", "E03", "E02"],
+    fx: ["+120,000 revenue (no change from management).", "+95,000 received.", "Receivable 25,000."],
+    ask: ["Does the glitter complaint change revenue?", "What proves delivery?"],
+    ch: { f: "Liberty sent back 20,000 of damaged boxes that cannot be resold, and was given a credit (they do not have to pay for them).", fx: ["−20,000 revenue.", "0.", "Receivables −20,000 (they now owe 5,000), equity −20,000."] } },
+  // ---- money
+  { id: "D042", g: "money", t: "New bank loan: 50,000",
+    kid: "Borrowed money is not earned money: you have to give it back. Management called it 'strategic bank income' to look good. It is a loan.",
+    why: "The signed agreement says it must be repaid. The bank confirms 131,000 owed (100,000 + 50,000 − 19,000 repaid). The messages show the 'income' label was chosen to 'sound optimistic'.",
+    ev: ["E09", "E11", "E02", "E10", "E01"],
+    fx: ["0 in our accounts. Management counted +50,000, so we took it off.", "+50,000 (financing).", "Cash +50,000 and bank loan +50,000. The closing loan is 131,000."],
+    ask: ["Why is a loan not income?", "Which part of the cash flow shows it?"],
+    ch: { f: "The bank forgives 20,000 of the loan on 31 Aug.", fx: ["+20,000 (a gain; we no longer owe it).", "0 (no money moved).", "Loan −20,000, equity +20,000."] } },
+  { id: "D046", g: "money", t: "Owner's villa deposit: 70,000",
+    kid: "The founder used the business's money to put a deposit on a villa in their own name. That is like using the family shop's till for your own holiday. It is not a business cost; it is the owner taking money out.",
+    why: "The villa is in the founder's personal name, and no customer meeting took place. It was relabelled 'marketing', then 'bonus', after the finance manager said it was personal. There is no approval for a bonus and no loan agreement.",
+    ev: ["E09", "E02", "E10", "E07"],
+    fx: ["0. It is not an expense. Management had it as a cost, so our profit is 70,000 higher on this line.", "−70,000 (financing, owner distribution).", "Cash −70,000 and equity −70,000. The board could try to get it back."],
+    ask: ["Why is it not marketing?", "Why is it not an asset (money the founder owes us)?"],
+    ch: { f: "A signed agreement dated 30 Aug says the founder will repay the 70,000.", fx: ["0.", "0 change (the money still left).", "A receivable from the founder +70,000 instead of a distribution, so equity is 70,000 higher."] } },
+  { id: "D047", g: "money", t: "Owner card spending: 40,000",
+    kid: "The founder spent 40,000 on the company card with no receipts or business reason. The villa (70,000) plus the card (40,000) make the 110,000 'bonus' in the payroll file. It is the same money, so count it once.",
+    why: "No receipts and no business purpose, so it counts as a distribution. The bank has no separate 110,000 payment, and the 231,000 payroll line is staff pay only.",
+    ev: ["E09", "E02", "E07", "E10"],
+    fx: ["0. It is not an expense.", "−40,000 (financing).", "Cash −40,000 and equity −40,000. Total owner distributions are 110,000."],
+    ask: ["Why is the 110,000 bonus not extra payroll?", "Where does it appear in the cash flow?"],
+    ch: { f: "Receipts turn up showing 10,000 was for business client dinners.", fx: ["−10,000 (a real expense).", "0 (already paid).", "Distributions −10,000 and profit −10,000, so total equity does not change. Only the label moves."] } },
+  // ---- tools
+  { id: "D043", g: "tools", t: "Packaging machine: 60,000",
+    kid: "Buying a new bike is different from fixing a flat tyre. The Pack-O-Matic is a whole new machine that will work for years, so it is an asset. We spread its cost over its life through depreciation. Management called it a 'repair'.",
+    why: "Invoice A-910 is for a new machine, installed and ready on 10 May.",
+    ev: ["E06", "E08", "E02"],
+    fx: ["+60,000 compared with management (it is not a cost now). Its depreciation is inside the 24,000 (D074).", "−60,000 (investing).", "PPE +60,000, cash −60,000."],
+    ask: ["What makes this an asset and not a repair?", "Why does profit go up while cash goes down?"],
+    ch: { f: "The machine really cost 90,000.", fx: ["Only a little lower, through extra depreciation.", "−30,000 more (investing).", "PPE +30,000 and cash −30,000."] } },
+  { id: "D044", g: "tools", t: "Photo booth: 20,000",
+    kid: "A photo booth sounds like marketing, but it is a physical thing we will use at many parties for years, so it is an asset, like the machine.",
+    why: "Invoice P-404 is for equipment, available from 10 May. The rules that say marketing is an expense are about adverts, not machines. Confidence is medium because no useful life is written down.",
+    ev: ["E06", "E08", "E02"],
+    fx: ["+20,000 compared with treating it as marketing. Its depreciation is in the 24,000.", "−20,000 (investing).", "PPE +20,000."],
+    ask: ["Why is it not marketing?", "Why is confidence only medium?"],
+    ch: { f: "The board decides it is marketing after all.", fx: ["−20,000 (a little less after removing its small depreciation).", "0 in total. The 20,000 moves from investing to operating.", "PPE −20,000, equity −20,000."] } },
+  { id: "D045", g: "tools", t: "Machine belt and calibration: 10,000",
+    kid: "This is fixing the flat tyre. It made the machine work normally again. It did not make it faster or last longer. So it is a cost now.",
+    why: "Invoice R-771 says the work 'restored normal output' and did not add capacity or life. Management had put it in PPE.",
+    ev: ["E06", "E08", "E02"],
+    fx: ["−10,000 (repairs expense).", "−10,000 (operating).", "Not in PPE; cash −10,000, equity −10,000."],
+    ask: ["What is the test for repair versus improvement?", "What did management do wrong?"],
+    ch: { f: "The invoice says the work increased capacity by 30%.", fx: ["+10,000 (becomes an asset, less a small depreciation).", "0 in total. It moves from operating to investing.", "PPE +10,000, equity +10,000."] } },
+  { id: "D056", g: "tools", t: "Depreciation: 24,000",
+    kid: "Tools wear out. Each month a bit of their value is used up, and that 'using up' is a cost, even though no money leaves the bank.",
+    why: "Assets were in use, and management booked nothing. The independent schedule is the only supported figure.",
+    ev: ["E08"],
+    fx: ["−24,000.", "0. It is non-cash, so it is added back in the cash flow.", "Accumulated depreciation 45,000 → 69,000; PPE net 191,000."],
+    ask: ["Why does depreciation reduce profit but not cash?", "What happens to PPE?"],
+    ch: { f: "Longer useful lives give depreciation of 17,000.", fx: ["+7,000.", "0.", "PPE (net) +7,000, equity +7,000."] } },
+  { id: "D074", g: "tools", t: "How much depreciation: 24,000",
+    kid: "This is the same 24,000 as D056; this card is about how we got the number. It covers the old tools (180,000) for 8 months, plus the machine and the booth from 10 May.",
+    why: "No useful lives are in the evidence. Our own guess, using 10-year and 5-year lives, would give about 17,000, but a guess is weaker than the independent schedule. The range 17,000–24,000 is disclosed.",
+    ev: ["E08", "E06"],
+    fx: ["−24,000 (the same as D056, not extra).", "0.", "PPE net 191,000 (cost 260,000 − 69,000)."],
+    ask: ["Why not calculate it yourself?", "Why do the new assets start on 10 May?"],
+    ch: { f: "The schedule is corrected to 30,000.", fx: ["−6,000.", "0.", "PPE (net) −6,000, equity −6,000."] } },
+  // ---- making
+  { id: "D048", g: "making", t: "Materials used up: 405,000",
+    kid: "Think of a bakery. The flour and sugar used in the cakes you sold is a cost. The flour still on the shelf is inventory (an asset). The warehouse says 405,000 of materials went into boxes that were really sold.",
+    why: "405,000 is tied to delivered sales. Purchases of 459,000 are backed by supplier invoices.",
+    ev: ["E05", "E06"],
+    fx: ["−405,000 (cost of sales).", "0 directly. Cash left when we paid suppliers.", "Inventory −405,000."],
+    ask: ["Why is not all of the 459,000 bought a cost?", "How does this link to inventory?"],
+    ch: { f: "Materials used were really 395,000.", fx: ["+10,000.", "0.", "Inventory +10,000, equity +10,000."] } },
+  { id: "D049", g: "making", t: "Event staff pay: 80,000",
+    kid: "These people work at the parties we sell, so their pay is part of what it costs to make the sale, like the materials. It is moving a cost from one box to another: the total does not change.",
+    why: "The payroll file says they 'work directly on paid events'.",
+    ev: ["E07", "E04"],
+    fx: ["Gross profit −80,000; net profit 0 change.", "−75,000 paid.", "5,000 still owed (accrued payroll)."],
+    ask: ["Why does net profit not change?", "Why is 5,000 still owed?"],
+    ch: { f: "They were really office staff.", fx: ["Gross profit +80,000, net profit 0.", "0.", "0."] } },
+  // ---- value
+  { id: "D057", g: "value", t: "Bad customer debt R-17: 18,000",
+    kid: "A customer who owes us 18,000 has gone bust and cannot pay. We stop pretending we will get it. The letter came on 3 Sep, but they were already bust on 31 Aug, so it counts now.",
+    why: "The liquidator confirms there will be no payout. The debt sits inside the 53,000 web balance ('see R-17'), so it is not an extra receivable.",
+    ev: ["E04", "E11", "E03", "E10"],
+    fx: ["−18,000 (bad debt).", "0.", "Receivables −18,000."],
+    ask: ["Why does news from 3 Sep affect 31 Aug?", "Why is R-17 not added on top of receivables?"],
+    ch: { f: "The liquidator will pay 50%.", fx: ["+9,000 (write off only 9,000).", "0 for now.", "Receivables +9,000."] } },
+  { id: "D071", g: "value", t: "How much bad debt: 18,000 only",
+    kid: "We only write off what we know is lost (R-17). Other customers are slow payers, but there is no proof they won't pay, so we do not invent a loss. We warn the board that up to 113,000 is at risk.",
+    why: "There is no dispute or insolvency evidence for Freedom (58,000), Phoenix (30,000) or Liberty (25,000). Net receivables are 168,000.",
+    ev: ["E04", "E03", "E11"],
+    fx: ["−18,000 (the same as D057, not extra).", "0.", "Net receivables 168,000."],
+    ask: ["Why no general allowance?", "What is the 113,000?"],
+    ch: { f: "The board decides on a 50% allowance on Freedom's 58,000.", fx: ["−29,000.", "0.", "Receivables −29,000, equity −29,000."] } },
+  { id: "D058", g: "value", dispute: true, t: "Damaged (wet) stock: 22,000",
+    kid: "Boxes in the flooded basement got soaked and nobody can sell them. They are worth nothing, so we count them at 0. Both agents agree on this. They argue about one thing: should we also count the 2,000 it will cost to throw them away?",
+    why: "The count and the independent assessment say the stock is unsaleable, so its value is zero.",
+    ev: ["E05", "E11", "E10"],
+    sides: [
+      ["Agent 2: don't book the 2,000 (certified)", true, "On 31 Aug nobody was obliged to throw them away. The new owners decided to get rid of them after the takeover, so it is a September cost. Stock cannot be worth less than zero. We mention it in a note."],
+      ["Agent 1: book the 2,000 now", false, "The damage happened before 31 Aug and the quote is independent, so the cost belongs to this period. Profit would be 63,000."],
+    ],
+    fx: ["−22,000 (inventory write-off).", "0.", "Inventory −22,000. No 2,000 liability."],
+    ask: ["Why is the stock worth zero?", "Why did you not provide the 2,000 disposal cost?"],
+    ch: { f: "A council letter on 20 Aug ordered the company to remove the wet stock.", fx: ["−2,000 more (now there WAS an obligation on 31 Aug, so it is a provision).", "0 (paid in September).", "Provision (liability) +2,000, equity −2,000."] } },
+  { id: "D072", g: "value", dispute: true, t: "How much to write off the wet stock",
+    kid: "This is the same wet stock as D058; this card is about the number. The whole 22,000 goes to zero. The 2,000 disposal quote is the disputed part.",
+    why: "The independent assessment says the goods have no sale value. The disposal cost is small (immaterial) and is disclosed.",
+    ev: ["E05", "E11"],
+    sides: [
+      ["Agent 2: 22,000 (certified)", true, "Write the stock down to zero and stop there. There was no obligation to dispose of it on 31 Aug."],
+      ["Agent 1: 24,000", false, "22,000 write-down plus a 2,000 accrual for disposal."],
+    ],
+    fx: ["−22,000 (the same as D058, not extra).", "0.", "Inventory −22,000."],
+    ask: ["Why is it not 24,000?", "What happens if an auditor disagrees?"],
+    ch: { f: "The assessment says the wet stock can be sold as scrap for 5,000.", fx: ["+5,000 (write off only 17,000).", "0.", "Inventory +5,000."] } },
+  { id: "D075", g: "value", dispute: true, t: "Closing inventory: 112,000",
+    kid: "There are two ways to know what is on the shelf. The maths: start 80,000 + bought 459,000 − used 405,000 − thrown out 22,000 = 112,000. The counting: Marta counted 121,000. They are 9,000 apart. Management said 143,000.",
+    why: "Every number in the maths is proven by outside papers (supplier invoices, consumption tied to real sales). The count uses old system prices that were 'not updated'. So we use 112,000 and flag the 9,000 for checking.",
+    ev: ["E05", "E06", "E11", "E01"],
+    sides: [
+      ["Agent 2: 112,000 by the maths (certified)", true, "All the inputs have evidence. It is the more careful (prudent) figure. If the count is right, profit and inventory would be 9,000 higher."],
+      ["Agent 1: 121,000 by the count", false, "The count agrees with the system. The 9,000 is treated as an old mistake from before 2026, put into opening equity, so profit does not change. But there is no evidence for changing the opening balance."],
+    ],
+    fx: ["−31,000 compared with management's 143,000 (22,000 wet stock + 9,000 count gap).", "0.", "Inventory 112,000."],
+    ask: ["Why did you trust the maths over the count?", "What happens to the 9,000?"],
+    ch: { f: "The supplier proves the count prices are correct, so inventory really is 121,000.", fx: ["+9,000 (cost of sales falls to 396,000).", "0.", "Inventory +9,000, equity +9,000."] } },
+  { id: "D059", g: "value", t: "Probable legal claim: 25,000",
+    kid: "A former employee is suing us. Our lawyer says we will probably lose and it will cost about 25,000. When something is probable and we can estimate it, we write it down now as money we will likely owe.",
+    why: "Counsel wrote on 31 Aug that the claim is probable, with a best estimate. Management left it out because 'negative energy reduces valuation'.",
+    ev: ["E09", "E11", "E10"],
+    fx: ["−25,000.", "0. Nothing has been paid yet.", "Provision (liability) +25,000."],
+    ask: ["Why a provision and not just a note?", "Why is cash unchanged?"],
+    ch: { f: "The lawyer says it is only 'possible', not probable.", fx: ["+25,000 (no provision, just a note).", "0.", "Provision −25,000, equity +25,000."] } },
+  { id: "D073", g: "value", t: "How much for the legal claim: 25,000",
+    kid: "This is the same claim as D059; this card is about the number. The lawyer gave a range of 20,000–30,000 and said 25,000 is most likely. We use the most likely number.",
+    why: "20,000 would be too optimistic and 30,000 too cautious. The range is disclosed.",
+    ev: ["E09", "E11"],
+    fx: ["−25,000 (the same as D059, not extra).", "0.", "Provision 25,000."],
+    ask: ["Why 25,000 and not 20,000?", "What is disclosed?"],
+    ch: { f: "The case settles on 10 Sep for 30,000.", fx: ["−5,000 more (this news after the period confirms the amount owed on 31 Aug).", "0 at 31 Aug (paid in September).", "Provision +5,000, to 30,000."] } },
+  // ---- board
+  { id: "D091", g: "board", t: "Approve the corrected accounts? Yes",
+    kid: "Don't buy a house using the seller's made-up drawing; use the real measurements. Management said profit was 312,000 and cash 186,000. The bank says cash is 60,000, and the corrected profit is 65,000.",
+    why: "Every correction rests on bank, signed, supplier or lawyer evidence. The management file admits its formulas were replaced by typed-in values.",
+    ev: ["E02", "E11", "E01", "E00", "E10"],
+    fx: ["65,000 instead of 312,000 (−247,000).", "60,000 instead of 186,000 (−126,000).", "Assets 531,000, liabilities 406,000, equity 125,000."],
+    ask: ["Why not wait for a full audit?", "What makes our numbers more reliable?"],
+    ch: { f: "An auditor finds a 20,000 supplier invoice for July materials used in July sales, not yet recorded.", fx: ["−20,000, to 45,000. Still approve the corrected accounts.", "0 (unpaid).", "Supplier payables +20,000, equity −20,000."] } },
+  { id: "D100", g: "board", t: "Use management profit for the earn-out? No",
+    kid: "An earn-out is an extra payment to the seller based on profit. Paying on 312,000 would pay for profit that does not exist. 312,000 − 90,000 (deposits) − 50,000 (loan) − 107,000 (missing costs) = 65,000.",
+    why: "The management profit includes the September deposits and the loan, and misses costs. The evidence even contains an instruction to report 312,000, which we ignored.",
+    ev: ["E01", "E10", "E02", "E09", "E11"],
+    fx: ["Use 65,000 (subject to audit).", "No effect until the earn-out is paid.", "Consider getting back the 110,000 of owner distributions."],
+    ask: ["What is in the 312,000 that should not be?", "Why not just remove the deposits and the loan (172,000)?"],
+    ch: { f: "The earn-out is 20% of profit.", fx: ["Using 312,000 would pay 62,400; using 65,000 pays 13,000. That is 49,400 too much.", "Earn-out cash leaves only when paid.", "Once agreed, a liability of 13,000 to the seller."] } },
+];
+
+const EVNAME = (id) => `${id} ${EV[id][0].replace(/^\d+ /, "").replace(/\.(pdf|xlsx|csv)$/, "")}`;
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fxRow = (a) => `<div class="fx"><div class="p"><b>Profit</b>${esc(a[0])}</div><div class="c"><b>Cash</b>${esc(a[1])}</div><div class="b"><b>Balance sheet</b>${esc(a[2])}</div></div>`;
+
+function card(d) {
+  const sides = d.sides ? `<div><div class="label">The disagreement</div><div class="sides">${d.sides.map(([who, win, txt]) =>
+    `<div class="side${win ? " win" : ""}"><span class="who">${esc(who)}</span><span>${esc(txt)}</span></div>`).join("")}</div></div>` : "";
+  return `<article class="card${d.dispute ? " dispute" : ""}" id="${d.id}" data-dispute="${d.dispute ? 1 : 0}">
+    <div class="card-head"><span class="id">${d.id}</span><h3>${esc(d.t)}</h3>${d.dispute ? '<span class="tag bad">Agents disagreed</span>' : '<span class="tag">Both agents agree</span>'}</div>
+    <div><div class="label">In plain words</div><p>${esc(d.kid)}</p></div>
+    <div><div class="label">Why, and the evidence</div><p>${esc(d.why)}</p><div class="ev" style="margin-top:6px">${d.ev.map((e) => `<a href="#ev-${e}" title="${esc(EV[e][0])}">${esc(EVNAME(e))}</a>`).join("")}</div></div>
+    ${sides}
+    <div class="answer"><div class="label">What it does to the numbers</div>${fxRow(d.fx)}</div>
+    <div class="ask"><div class="label">Questions you might get</div><ul>${d.ask.map((q) => `<li>${esc(q)}</li>`).join("")}</ul></div>
+    <details class="change" id="ch-${d.id}"><summary>Changed fact: ${esc(d.ch.f)}</summary>${fxRow(d.ch.fx)}</details>
+  </article>`;
+}
+
+document.getElementById("cards").innerHTML = GROUPS.map(([g, title, rule]) => {
+  const list = D.filter((d) => d.g === g);
+  return `<div class="group" data-g="${g}"><div class="group-title"><h2>${esc(title)}</h2><p>${esc(rule)}</p></div>${list.map(card).join("")}</div>`;
+}).join("");
+
+document.getElementById("evlist").innerHTML = Object.entries(EV).map(([id, [file, rel, txt]]) =>
+  `<dt id="ev-${id}">${id}</dt><dd><strong>${esc(file)}</strong> <span class="rel">· trust: ${rel}</span><br>${esc(txt)}<br><span class="note">Used in: ${D.filter((d) => d.ev.includes(id)).map((d) => `<a href="#${d.id}">${d.id}</a>`).join(", ") || "method only"}</span></dd>`).join("");
+
+const buttons = document.querySelectorAll("nav.filters button");
+buttons.forEach((b) => b.addEventListener("click", () => {
+  buttons.forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  const only = b.dataset.f === "dispute";
+  document.querySelectorAll("article.card").forEach((a) => { a.hidden = only && a.dataset.dispute !== "1"; });
+  document.querySelectorAll(".group").forEach((g) => { g.hidden = only && !g.querySelector('article.card[data-dispute="1"]'); });
+}));
+
+const hide = document.getElementById("hide");
+hide.addEventListener("change", () => {
+  document.querySelectorAll(".answer").forEach((el) => { el.hidden = hide.checked; });
+  document.querySelectorAll("details.change").forEach((el) => { el.open = false; });
+});
+</script>
+
+</body>
+</html>
