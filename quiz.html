@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Material Decisions Quiz</title>
+<meta name="description" content="Practice quiz on the 25 DPI-HT-01 material decisions: sort the evidence, name the finance rule, explain the decision and work a changed fact through profit, cash and the balance sheet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --ground: #f3f5f4; --paper: #ffffff; --ink: #18211e; --muted: #56625d; --line: #d9e1dd; --soft: #eaefec;
+  --accent: #1f4e8c; --accent-ink: #ffffff;
+  --p: #6b3fb0; --p-bg: #f0eafa; --c: #0c7349; --c-bg: #e3f3ea; --b: #9a540f; --b-bg: #fbeedd;
+  --good: #0c7349; --good-bg: #e3f3ea; --bad: #b42318; --bad-bg: #fdeceb; --mid: #8a5a00; --mid-bg: #fbf0d9;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground: #111615; --paper: #1a201f; --ink: #e5ebe8; --muted: #9aa7a1; --line: #2d3634; --soft: #222a28;
+    --accent: #8db0ea; --accent-ink: #0d1a2c;
+    --p: #b99df0; --p-bg: #2a2140; --c: #62cc98; --c-bg: #15301f; --b: #e9a862; --b-bg: #352612;
+    --good: #62cc98; --good-bg: #15301f; --bad: #ff8e80; --bad-bg: #3a1c19; --mid: #efbe62; --mid-bg: #33280f;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #111615; --paper: #1a201f; --ink: #e5ebe8; --muted: #9aa7a1; --line: #2d3634; --soft: #222a28;
+  --accent: #8db0ea; --accent-ink: #0d1a2c;
+  --p: #b99df0; --p-bg: #2a2140; --c: #62cc98; --c-bg: #15301f; --b: #e9a862; --b-bg: #352612;
+  --good: #62cc98; --good-bg: #15301f; --bad: #ff8e80; --bad-bg: #3a1c19; --mid: #efbe62; --mid-bg: #33280f;
+}
+* { box-sizing: border-box; }
+body { background: var(--ground); color: var(--ink); font: 16px/1.55 var(--body); padding-inline: 16px; padding-block: 0 48px; }
+.wrap { max-width: 860px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(26px, 5vw, 36px); }
+h2 { font-size: 22px; }
+h3 { font-size: 17px; }
+p { margin: 0; max-width: 68ch; }
+button { font: 600 15px var(--body); cursor: pointer; }
+button:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+header.intro { padding-block: 30px 14px; display: grid; gap: 10px; }
+.eyebrow { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.lede { color: var(--muted); }
+.modes { display: flex; flex-wrap: wrap; gap: 8px; }
+.modes button { padding: 8px 14px; border-radius: 99px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); }
+.modes button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+details.ref { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin-block: 14px; }
+details.ref summary { cursor: pointer; font-weight: 700; }
+.tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-block: 12px; }
+.tier { border-radius: 10px; padding: 12px; display: grid; gap: 4px; align-content: start; font-size: 15px; }
+.tier strong { font-family: var(--display); font-size: 16px; }
+.tier.strong { background: var(--good-bg); } .tier.strong strong { color: var(--good); }
+.tier.medium { background: var(--mid-bg); } .tier.medium strong { color: var(--mid); }
+.tier.weak { background: var(--bad-bg); } .tier.weak strong { color: var(--bad); }
+ol.rules { margin: 8px 0 0; padding-left: 22px; display: grid; gap: 4px; font-size: 15px; max-width: 72ch; }
+.progress { display: flex; align-items: center; gap: 12px; margin-block: 16px 10px; }
+.bar { flex: 1; height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .3s; }
+.progress span { font-family: var(--mono); font-size: 13px; color: var(--muted); white-space: nowrap; }
+.round { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 20px; }
+.round.dispute { border: 2px solid var(--bad); }
+.round-head { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
+.round-head .id { font-family: var(--mono); color: var(--muted); font-size: 14px; }
+.tag { font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 99px; background: var(--bad-bg); color: var(--bad); }
+.part { display: grid; gap: 10px; border-top: 1px solid var(--line); padding-top: 16px; }
+.part-label { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; }
+.evrow { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 12px; align-items: center; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+.evrow:last-child { border-bottom: 0; }
+.evrow .file { font-size: 15px; }
+.evrow .file small { display: block; color: var(--muted); font-size: 13px; }
+.seg { justify-self: start; display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.seg button { border: 0; background: var(--paper); color: var(--ink); padding: 6px 10px; font-size: 13px; border-left: 1px solid var(--line); }
+.seg button:first-child { border-left: 0; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.seg button.right { background: var(--good); color: var(--paper); }
+.seg button.wrong { background: var(--bad); color: var(--paper); }
+.opts { display: grid; gap: 8px; }
+.opt { text-align: left; font-weight: 400; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); }
+.opt[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.opt.right { border-color: var(--good); background: var(--good-bg); }
+.opt.wrong { border-color: var(--bad); background: var(--bad-bg); }
+.fact { background: var(--soft); border-radius: 10px; padding: 12px 14px; font-weight: 700; }
+.dirs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.dir { border-radius: 10px; padding: 10px 12px; display: grid; gap: 6px; }
+.dir b { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; }
+.dir.p { background: var(--p-bg); } .dir.p b { color: var(--p); }
+.dir.c { background: var(--c-bg); } .dir.c b { color: var(--c); }
+.bsq { background: var(--b-bg); border-radius: 10px; padding: 10px 12px; display: grid; gap: 8px; }
+.bsq > b { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--b); }
+textarea { width: 100%; min-height: 70px; font: 15px/1.5 var(--body); padding: 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--ground); color: var(--ink); resize: vertical; }
+.qa { display: grid; gap: 8px; }
+.qa + .qa { margin-top: 8px; }
+.qa > label { font-weight: 700; }
+.model { background: var(--soft); border-radius: 8px; padding: 10px 12px; font-size: 15px; }
+.selfmark { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 14px; color: var(--muted); }
+.act { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.btn { padding: 8px 16px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); }
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn:disabled { opacity: .45; cursor: default; }
+.fb { font-size: 15px; border-radius: 8px; padding: 10px 12px; }
+.fb.ok { background: var(--good-bg); color: var(--ink); border-left: 4px solid var(--good); }
+.fb.no { background: var(--bad-bg); color: var(--ink); border-left: 4px solid var(--bad); }
+.next { display: flex; justify-content: flex-end; }
+.summary { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 16px; }
+.scores { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.score { border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
+.score span { display: block; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.score strong { font-family: var(--mono); font-size: 22px; }
+.review li { margin-bottom: 6px; }
+@media (max-width: 560px) {
+  .round, .summary { padding: 16px; }
+  .evrow { grid-template-columns: 1fr; }
+  .dirs { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+<header class="intro">
+  <div class="eyebrow">DPI-HT-01 · practice for the material-decisions test</div>
+  <h1>Material decisions quiz</h1>
+  <p class="lede">Each round takes one of your 25 material decisions and works it like the test: sort the evidence, name the finance rule, answer two short explanation questions, then trace one changed fact through profit, cash and the balance sheet.</p>
+  <div class="modes" role="group" aria-label="Quiz mode">
+    <button type="button" id="m-mock" data-mode="mock" aria-pressed="true">Mock test · 5 random</button>
+    <button type="button" id="m-disp" data-mode="disputes" aria-pressed="false">The 3 disputes</button>
+    <button type="button" id="m-all" data-mode="all" aria-pressed="false">All 25</button>
+  </div>
+</header>
+
+<details class="ref" id="ref">
+  <summary>How the Finance Reference asks you to separate evidence</summary>
+  <p style="margin-top:10px">Reference §10: <em>"Prefer bank and signed third-party evidence over unsupported management claims. Preserve competing interpretations, quantify their effect, state confidence and make the final judgment yourself."</em></p>
+  <div class="tiers">
+    <div class="tier strong"><strong>Strong</strong><span>Bank records and signed or third-party documents. E00 board order, E02 bank, E04 signed contracts, E06 supplier invoices, E09 loan agreement, owner card and counsel, E11 confirmations after the takeover.</span></div>
+    <div class="tier medium"><strong>Medium</strong><span>The company's own records: useful, but check them against strong evidence. E03 CRM, E05 warehouse count, E07 payroll, E08 asset register.</span></div>
+    <div class="tier weak"><strong>Weak</strong><span>Unsupported management claims and pressure. Use them only as evidence of override, never as the number. E01 management spreadsheet, E10 emails and WhatsApp.</span></div>
+  </div>
+  <p>The finance rules in the Reference:</p>
+  <ol class="rules" id="rules"></ol>
+</details>
+
+<div class="progress"><div class="bar"><i id="bar"></i></div><span id="count"></span></div>
+<main id="stage"></main>
+</div>
+
+<script>
+const RULES = [
+  "The accounting equation: assets = liabilities + equity",
+  "Profit is not cash",
+  "Revenue and receivables: revenue on delivery; deposits are liabilities",
+  "Inventory and COGS: physical existence does not guarantee value",
+  "Payroll and accruals: expense in the period worked",
+  "Fixed assets, repairs and depreciation",
+  "Loans, interest and owner money",
+  "Provisions and later evidence",
+  "Reconstructing the three statements",
+  "Evidence discipline",
+];
+const EV = {
+  E00: ["00 Board order", "strong"], E01: ["01 Management spreadsheet 'USE THIS NUMBERS'", "weak"],
+  E02: ["02 Bank export", "strong"], E03: ["03 CRM export", "medium"], E04: ["04 Signed contracts and acceptances", "strong"],
+  E05: ["05 Warehouse count (Marta)", "medium"], E06: ["06 Supplier invoices", "strong"], E07: ["07 Payroll file", "medium"],
+  E08: ["08 Asset register and depreciation schedule", "medium"], E09: ["09 Loan agreement, owner card, counsel letter", "strong"],
+  E10: ["10 Emails and WhatsApp", "weak"], E11: ["11 Confirmations received after takeover", "strong"],
+};
+const TIER_WHY = { strong: "bank or signed/third-party", medium: "the company's own records", weak: "unsupported management claim or pressure" };
+
+// rule: index into RULES. ch.bs[0] is the correct balance-sheet answer.
+const D = [
+  { id: "D041", t: "September customer deposits (90,000)", rule: 2, ev: ["E02", "E04", "E03", "E10"],
+    q: [["Why is a customer deposit not revenue?", "Revenue is recognised when the promised service is delivered. The parties are on 15 and 24 Sep and nothing was delivered by 31 Aug, so the 90,000 is a promise we still owe: a contract liability."],
+        ["Why does cash go up but profit does not?", "Profit is not cash. The 90,000 really arrived (an operating inflow), but it is not earned yet. Cash +90,000 and liability +90,000 keep the balance sheet in balance."]],
+    ch: { f: "New Beginnings' party actually took place on 28 Aug.", p: "up", c: "none", bs: ["Contract liability −60,000; equity +60,000", "Cash +60,000; revenue +60,000", "Receivables +60,000; equity +60,000"], ex: "It was delivered in the period, so 60,000 becomes revenue. The cash had already come in, so cash does not move. The promise (the liability) is gone." } },
+  { id: "D068", t: "Undelivered September events", rule: 2, ev: ["E04", "E03", "E02", "E10"],
+    q: [["Why is this not a second 90,000 adjustment?", "It is the same deposits as D041, seen from the revenue side. Removing them twice would understate profit by 90,000."],
+        ["When will the revenue be recognised?", "In September, when the parties take place on 15 and 24 Sep and the promise is fulfilled."]],
+    ch: { f: "10,000 was spent before 31 Aug on decorations for the September parties.", p: "none", c: "down", bs: ["Contract cost (asset) +10,000; cash −10,000", "Expense 10,000; equity −10,000", "Contract liability +10,000; cash −10,000"], ex: "The cost belongs with the September sale, so it is held as an asset until then. The cash did leave the bank." } },
+  { id: "D064", t: "NorthStar contract (180,000)", rule: 2, ev: ["E04", "E03", "E02"],
+    q: [["How do you know 'N STAR EVENTS' in the bank is NorthStar?", "The amount (180,000) and the date (12 Feb) match invoice INV-26012 exactly. The CRM just spells the same customer three ways."],
+        ["When is the revenue recognised?", "On 12 Feb, when NorthStar signed acceptance of the delivered boxes. It is based on delivery, not on when the cash came (here it was the same day)."]],
+    ch: { f: "NorthStar had only paid 150,000 by 31 Aug.", p: "none", c: "down", bs: ["Receivables +30,000; cash −30,000", "Revenue −30,000; equity −30,000", "Contract liability +30,000; cash −30,000"], ex: "The boxes were still delivered and accepted, so revenue stays 180,000. Only the collection changes." } },
+  { id: "D065", t: "Freedom contract (200,000)", rule: 2, ev: ["E04", "E03", "E02"],
+    q: [["Why count 200,000 and not only the 142,000 received?", "Revenue follows delivery. Freedom accepted on 18 Mar, so the full 200,000 is earned. The 58,000 not yet paid is a receivable."],
+        ["What is the risk on the 58,000?", "It is over 5 months old, so it may not be collected. There is no insolvency or dispute evidence, so it is disclosed as an uncertainty, not written off."]],
+    ch: { f: "Freedom goes bankrupt before 31 Aug and will pay nothing more.", p: "down", c: "none", bs: ["Receivables −58,000; equity −58,000", "Cash −58,000; equity −58,000", "Contract liability +58,000; equity −58,000"], ex: "A bad-debt expense of 58,000. No money moves." } },
+  { id: "D066", t: "Phoenix event (100,000)", rule: 2, ev: ["E04", "E03", "E02"],
+    q: [["Why is an email acceptance enough?", "The event was completed on 29 Apr, and the customer paid 70% through the bank, which backs up the email."],
+        ["Why is confidence only medium?", "An email is weaker evidence than a signed acceptance document."]],
+    ch: { f: "The Phoenix event was cancelled and never happened.", p: "down", c: "none", bs: ["Receivable −30,000; refund liability +70,000; equity −100,000", "Cash −70,000; receivable −30,000; equity −100,000", "No balance sheet change; add a note only"], ex: "No delivery means no revenue (−100,000). The 70,000 already received must be paid back, so it becomes a liability." } },
+  { id: "D067", t: "Liberty order (120,000)", rule: 2, ev: ["E04", "E03", "E02"],
+    q: [["Does the glitter complaint change revenue?", "No. Liberty wrote 'Accepted in full', and there is no return or dispute evidence."],
+        ["What proves delivery?", "Delivery on 20 Jun with written acceptance (E04), matched in the CRM, and 95,000 received in the bank."]],
+    ch: { f: "Liberty sent back 20,000 of damaged boxes that cannot be resold and was given a credit.", p: "down", c: "none", bs: ["Receivables −20,000; equity −20,000", "Cash −20,000; equity −20,000", "Inventory +20,000; receivables −20,000"], ex: "Revenue falls by 20,000. Liberty now owes 5,000 instead of 25,000." } },
+  { id: "D042", t: "New bank loan (50,000)", rule: 6, ev: ["E09", "E11", "E02", "E10", "E01"],
+    q: [["Why is a loan not income?", "It must be repaid under the signed agreement. Borrowing increases cash and debt, not profit. The 'strategic bank income' label came from the founder."],
+        ["Where does it appear in the cash flow?", "Financing activities: +50,000 advance and −19,000 principal repaid. Interest (12,000) is an expense."]],
+    ch: { f: "The bank forgives 20,000 of the loan on 31 Aug.", p: "up", c: "none", bs: ["Loan −20,000; equity +20,000", "Cash +20,000; loan −20,000", "No change, because loans never affect profit"], ex: "A debt we no longer owe is a gain. No money moves." } },
+  { id: "D046", t: "Owner's villa deposit (70,000)", rule: 6, ev: ["E09", "E02", "E10", "E07"],
+    q: [["Why is it not marketing?", "The villa is in the founder's personal name and no customer meeting took place. The label changed from 'marketing' to 'bonus' after the finance manager called it personal."],
+        ["Why is it not a receivable from the founder?", "There is no loan agreement or evidence of repayment. Personal owner spending is a distribution unless evidence supports another treatment."]],
+    ch: { f: "A signed agreement dated 30 Aug says the founder will repay the 70,000.", p: "none", c: "none", bs: ["Receivable from founder +70,000; equity 70,000 higher (no distribution)", "Cash +70,000; equity +70,000", "Marketing expense 70,000; equity −70,000"], ex: "The money still left the bank, but now it is money owed back to the company, so it is an asset, not a distribution." } },
+  { id: "D047", t: "Owner card spending (40,000)", rule: 6, ev: ["E09", "E02", "E07", "E10"],
+    q: [["Why is the 110,000 'founder bonus' not extra payroll?", "The bank has no separate 110,000 payment. Villa 70,000 + card 40,000 = 110,000 exactly, and the 231,000 payroll line is staff pay only."],
+        ["Where does it go in the cash flow?", "Financing activities, as an owner distribution (−40,000)."]],
+    ch: { f: "Receipts show 10,000 of the card spending was for business client dinners.", p: "down", c: "none", bs: ["Distributions −10,000 and profit −10,000, so total equity is unchanged", "Cash +10,000; equity +10,000", "Equity −20,000"], ex: "It becomes a real expense instead of an owner withdrawal. Only the label inside equity moves." } },
+  { id: "D043", t: "Packaging machine (60,000)", rule: 5, ev: ["E06", "E08", "E02"],
+    q: [["What makes it an asset and not a repair?", "It is a whole new machine (invoice A-910), installed 10 May, which creates a long-term productive resource."],
+        ["Compared with management, why does profit go up while cash goes down?", "Capitalising removes a 60,000 expense, so profit goes up. The 60,000 was still paid, as an investing outflow."]],
+    ch: { f: "The machine really cost 90,000.", p: "down", c: "down", bs: ["PPE +30,000; cash −30,000", "Expense 30,000; equity −30,000", "Loan +30,000; PPE +30,000"], ex: "The extra cost is capitalised. Profit falls only a little, through extra depreciation. Investing cash goes out by 30,000 more." } },
+  { id: "D044", t: "Photo booth (20,000)", rule: 5, ev: ["E06", "E08", "E02"],
+    q: [["Why is it not marketing?", "It is durable equipment (invoice P-404) that can be used at many events for years. Marketing is expensed because adverts are used up at once; equipment is not."],
+        ["Why is confidence only medium?", "No useful life or business use is documented, and its name and management's label suggest marketing."]],
+    ch: { f: "The board decides the photo booth is marketing after all.", p: "down", c: "none", bs: ["PPE −20,000; equity −20,000", "Cash −20,000; PPE −20,000", "Contract liability +20,000"], ex: "Profit falls by 20,000 (less its small depreciation). Total cash is unchanged: the 20,000 moves from investing to operating." } },
+  { id: "D045", t: "Machine belt and calibration (10,000)", rule: 5, ev: ["E06", "E08", "E02"],
+    q: [["What is the test for repair versus improvement?", "Capitalise spending that creates or improves a long-term resource. Expense work that only restores normal operation."],
+        ["What did management do wrong?", "They put it in PPE, which overstated assets and profit by 10,000. The invoice says it 'restored normal output'."]],
+    ch: { f: "The invoice says the work increased capacity by 30%.", p: "up", c: "none", bs: ["PPE +10,000; equity +10,000", "Cash +10,000; equity +10,000", "Repairs expense +10,000; equity −10,000"], ex: "It becomes an improvement, so it is capitalised. Total cash is the same; it moves from operating to investing." } },
+  { id: "D056", t: "Depreciation (24,000)", rule: 5, ev: ["E08"],
+    q: [["Why does depreciation reduce profit but not cash?", "It spreads the cost of assets that are already paid for. No money moves now, so it is added back in the cash flow."],
+        ["What happens to PPE?", "Accumulated depreciation goes from 45,000 to 69,000. Net PPE is 191,000 (cost 260,000)."]],
+    ch: { f: "Longer useful lives give depreciation of 17,000.", p: "up", c: "none", bs: ["PPE (net) +7,000; equity +7,000", "Cash +7,000; equity +7,000", "Loan −7,000; equity +7,000"], ex: "7,000 less expense. No money moves." } },
+  { id: "D074", t: "How much depreciation (24,000)", rule: 5, ev: ["E08", "E06"],
+    q: [["Why not calculate it yourself?", "No useful lives are in the evidence. A self-computed figure (about 17,000) would be a guess, weaker than the independent schedule. The range 17,000–24,000 is disclosed."],
+        ["Why do the new assets start on 10 May?", "That is when they were installed and available for use."]],
+    ch: { f: "The depreciation schedule is corrected to 30,000.", p: "down", c: "none", bs: ["PPE (net) −6,000; equity −6,000", "Cash −6,000; equity −6,000", "Provision +6,000; equity −6,000"], ex: "6,000 more expense. Non-cash." } },
+  { id: "D048", t: "Materials used up (405,000)", rule: 3, ev: ["E05", "E06"],
+    q: [["Why is not all of the 459,000 bought a cost?", "Only materials used for delivered sales are cost of goods sold. The rest stays in inventory."],
+        ["How does this link to inventory?", "Closing inventory = opening 80,000 + purchases 459,000 − COGS 405,000 − write-off 22,000 = 112,000."]],
+    ch: { f: "Materials actually used were 395,000.", p: "up", c: "none", bs: ["Inventory +10,000; equity +10,000", "Cash +10,000; equity +10,000", "Payables −10,000; equity +10,000"], ex: "Cost of sales is 10,000 lower, so 10,000 more stays on the shelf." } },
+  { id: "D049", t: "Event staff pay (80,000)", rule: 4, ev: ["E07", "E04"],
+    q: [["Why does net profit not change?", "It is a reclassification from admin to cost of sales. Gross profit falls by 80,000, but total expenses stay the same."],
+        ["Why is 5,000 still owed?", "Expense 80,000 − cash paid 75,000 = 5,000 accrued. Payroll belongs to the period worked, not the period paid."]],
+    ch: { f: "The event staff were really office staff.", p: "none", c: "none", bs: ["No balance sheet change (gross profit +80,000, net profit unchanged)", "Accrued payroll −5,000; equity +5,000", "Cash +80,000; equity +80,000"], ex: "It is only a label change inside the P&L." } },
+  { id: "D057", t: "Bad customer debt R-17 (18,000)", rule: 7, ev: ["E04", "E11", "E03", "E10"],
+    q: [["Why does news from 3 Sep affect 31 Aug?", "The customer was already in liquidation on 31 Aug. Later evidence can confirm a condition that already existed at the reporting date (an adjusting event)."],
+        ["Why is R-17 not added on top of receivables?", "The CRM web line says '€53k gross open; see R-17', so it is already inside the 186,000."]],
+    ch: { f: "The liquidator will pay 50% of R-17.", p: "up", c: "none", bs: ["Receivables +9,000; equity +9,000", "Cash +9,000; equity +9,000", "Provision +9,000; equity −9,000"], ex: "Write off only 9,000. Nothing has been received yet." } },
+  { id: "D071", t: "How much bad debt (18,000 only)", rule: 2, ev: ["E04", "E03", "E11"],
+    q: [["Why no general allowance?", "There is no dispute, insolvency or default evidence for the other customers, so an allowance would be invented. The risk is disclosed instead."],
+        ["What is the 113,000?", "Aged B2B balances at risk: Freedom 58,000 + Phoenix 30,000 + Liberty 25,000, disclosed as an uncertainty."]],
+    ch: { f: "The board books a 50% allowance on Freedom's 58,000.", p: "down", c: "none", bs: ["Receivables −29,000; equity −29,000", "Cash −29,000; equity −29,000", "Contract liability +29,000"], ex: "An estimate of loss reduces profit and the asset. No cash moves." } },
+  { id: "D058", t: "Damaged (wet) stock (22,000)", rule: 3, dispute: true, ev: ["E05", "E11", "E10"],
+    q: [["Why is the stock worth zero?", "Physical existence does not guarantee value. The count and the independent assessment say it is unsaleable, so its net realisable value is nil."],
+        ["Why did you not provide the 2,000 disposal cost (Agent 1's view)?", "There was no legal or constructive obligation on 31 Aug. Disposal was decided after the takeover, and inventory cannot go below zero. It is disclosed as a 2,000 risk."]],
+    ch: { f: "A council letter dated 20 Aug ordered the company to remove the wet stock.", p: "down", c: "none", bs: ["Provision +2,000; equity −2,000", "Inventory −2,000 (to minus 2,000)", "Cash −2,000; equity −2,000"], ex: "Now there WAS an obligation on 31 Aug, so the 2,000 is provided: Agent 1's answer becomes right. It is paid in September." } },
+  { id: "D072", t: "How much to write off the wet stock (22,000)", rule: 7, dispute: true, ev: ["E05", "E11"],
+    q: [["Why is it 22,000 and not 24,000?", "The write-down takes the stock to zero (22,000). The extra 2,000 would be a provision, but there was no obligation at 31 Aug."],
+        ["What if an auditor disagrees?", "Profit falls by 2,000 to 63,000 and liabilities rise by 2,000. It is immaterial and disclosed as an uncertainty."]],
+    ch: { f: "The assessment says the wet stock can be sold as scrap for 5,000.", p: "up", c: "none", bs: ["Inventory +5,000; equity +5,000", "Cash +5,000; equity +5,000", "Provision −5,000; equity +5,000"], ex: "Write off only 17,000. Nothing is sold yet, so no cash." } },
+  { id: "D075", t: "Closing inventory (112,000)", rule: 3, dispute: true, ev: ["E05", "E06", "E11", "E01"],
+    q: [["Why trust the roll-forward (112,000) over the count (121,000)?", "Every input is evidenced (opening balance, supplier-invoiced purchases, consumption tied to delivered sales). The count uses a system cost that was 'not updated'. It is also the more prudent figure."],
+        ["What happens to the 9,000 gap?", "It is flagged for investigation and disclosed as an uncertainty (0 to +9,000 profit), not booked. Agent 1 put it into opening equity, which has no evidence."]],
+    ch: { f: "The supplier proves the count prices are right, so inventory really is 121,000.", p: "up", c: "none", bs: ["Inventory +9,000; equity +9,000", "Cash +9,000; equity +9,000", "Opening equity +9,000, profit unchanged"], ex: "Cost of sales falls to 396,000, so profit rises by 9,000. (Putting it in opening equity was Agent 1's route, and it has no evidence.)" } },
+  { id: "D059", t: "Probable legal claim (25,000)", rule: 7, ev: ["E09", "E11", "E10"],
+    q: [["Why a provision and not just a note?", "Counsel said on 31 Aug that the claim is probable and gave a best estimate: a past event, a probable obligation and a reliable estimate."],
+        ["Why is cash unchanged?", "Nothing has been paid yet. A provision is a liability and an expense, not a payment."]],
+    ch: { f: "Counsel says the claim is only 'possible', not probable.", p: "up", c: "none", bs: ["Provision −25,000; equity +25,000", "Cash +25,000; equity +25,000", "Keep the provision, add a note"], ex: "No provision; disclose it as a contingent liability instead." } },
+  { id: "D073", t: "How much for the legal claim (25,000)", rule: 7, ev: ["E09", "E11"],
+    q: [["Why 25,000 and not 20,000?", "Use the best estimate of the most likely outcome, which counsel says is 25,000. 20,000 is optimistic; 30,000 is too cautious."],
+        ["What is disclosed?", "The range 20,000–30,000 (±5,000 on profit)."]],
+    ch: { f: "The case settles on 10 Sep for 30,000.", p: "down", c: "none", bs: ["Provision +5,000 (to 30,000); equity −5,000", "Cash −30,000; provision −25,000", "No change, because it happened after 31 Aug"], ex: "Later evidence confirms the obligation that existed on 31 Aug. It is paid in September." } },
+  { id: "D091", t: "Approve the corrected accounts? (Yes)", rule: 9, ev: ["E02", "E11", "E01", "E00", "E10"],
+    q: [["Why not wait for a full audit?", "The corrections rest on bank, signed, supplier and counsel evidence. Relying on the management pack in the meantime is worse. An audit should still follow."],
+        ["What makes your numbers more reliable than management's?", "They follow bank and third-party evidence. The management file is unreconciled, with formulas replaced by values, and the bank confirms cash of 60,000, not 186,000."]],
+    ch: { f: "An auditor finds an unrecorded 20,000 July supplier invoice for materials used in July sales.", p: "down", c: "none", bs: ["Supplier payables +20,000; equity −20,000", "Cash −20,000; equity −20,000", "Inventory +20,000; payables +20,000"], ex: "Profit falls to 45,000. The accounts are still the right basis; approve the corrected version." } },
+  { id: "D100", t: "Use management profit for the earn-out? (No)", rule: 9, ev: ["E01", "E10", "E02", "E09", "E11"],
+    q: [["What is in the 312,000 that should not be?", "90,000 of undelivered deposits and the 50,000 loan, while 107,000 of net costs are missing."],
+        ["Why not just remove the deposits and the loan (172,000)?", "That still misses 107,000 of cost corrections: bad debt, write-off, legal, depreciation, payroll accrual and reclassifications."]],
+    ch: { f: "The earn-out is 20% of profit.", p: "none", c: "none", bs: ["Once agreed, a 13,000 liability to the seller (49,400 less than on 312,000)", "Profit +49,400", "Cash −62,400 on 31 Aug"], ex: "20% × 312,000 = 62,400, compared with 20% × 65,000 = 13,000. Nothing moves until it is agreed and paid." } },
+];
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const DIR = { up: "Up", down: "Down", none: "No change" };
+$("rules").innerHTML = RULES.map((r) => `<li>${esc(r)}</li>`).join("");
+
+let deck = [], idx = 0, score = null;
+
+function start(mode) {
+  document.querySelectorAll(".modes button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.mode === mode ? "true" : "false"));
+  deck = mode === "mock" ? shuffle(D).slice(0, 5) : mode === "disputes" ? D.filter((d) => d.dispute) : D.slice();
+  idx = 0;
+  score = { ev: [0, 0], rule: [0, 0], explain: [0, 0], ch: [0, 0], missed: [] };
+  render();
+}
+
+function progress() {
+  $("bar").style.width = `${(idx / deck.length) * 100}%`;
+  $("count").textContent = idx < deck.length ? `Decision ${idx + 1} of ${deck.length}` : `Done · ${deck.length} of ${deck.length}`;
+}
+
+function render() {
+  progress();
+  if (idx >= deck.length) return summary();
+  const d = deck[idx];
+  const ruleOpts = shuffle([d.rule, ...shuffle(RULES.map((_, i) => i).filter((i) => i !== d.rule)).slice(0, 3)]);
+  const bsOpts = shuffle(d.ch.bs.map((t, i) => ({ t, ok: i === 0 })));
+  $("stage").innerHTML = `<article class="round${d.dispute ? " dispute" : ""}">
+    <div class="round-head"><span class="id">${d.id}</span><h2>${esc(d.t)}</h2>${d.dispute ? '<span class="tag">Agents disagreed</span>' : ""}</div>
+
+    <section class="part" id="p-ev">
+      <div class="part-label">1 · Separate the evidence</div>
+      <p>How strong is each file this decision rests on? (Finance Reference §10)</p>
+      <div>${d.ev.map((e) => `<div class="evrow" data-e="${e}"><div class="file">${e} · ${esc(EV[e][0])}<small hidden></small></div>
+        <div class="seg" role="group" aria-label="Strength of ${e}">${["strong", "medium", "weak"].map((t) => `<button type="button" data-t="${t}" aria-pressed="false">${t[0].toUpperCase() + t.slice(1)}</button>`).join("")}</div></div>`).join("")}</div>
+      <div class="act"><button type="button" class="btn" id="chk-ev" disabled>Check evidence</button></div>
+    </section>
+
+    <section class="part" id="p-rule">
+      <div class="part-label">2 · Which finance rule decides it?</div>
+      <div class="opts">${ruleOpts.map((r) => `<button type="button" class="opt" data-r="${r}" aria-pressed="false">§${r + 1} ${esc(RULES[r])}</button>`).join("")}</div>
+      <div class="act"><button type="button" class="btn" id="chk-rule" disabled>Check rule</button></div>
+    </section>
+
+    <section class="part" id="p-exp">
+      <div class="part-label">3 · Two short explanation questions</div>
+      ${d.q.map(([q, a], i) => `<div class="qa"><label for="ans-${i}">${esc(q)}</label><textarea id="ans-${i}" placeholder="Answer in one or two sentences, as you would in the test"></textarea>
+        <div class="act"><button type="button" class="btn ghost" data-show="${i}">Show model answer</button></div>
+        <div class="model" id="model-${i}" hidden>${esc(a)}</div>
+        <div class="selfmark" id="mark-${i}" hidden>Did your answer cover this? <button type="button" class="btn ghost" data-mark="${i}" data-v="1">Yes</button><button type="button" class="btn ghost" data-mark="${i}" data-v="0">Not yet</button></div></div>`).join("")}
+    </section>
+
+    <section class="part" id="p-ch">
+      <div class="part-label">4 · Changed fact</div>
+      <div class="fact">${esc(d.ch.f)}</div>
+      <div class="dirs">
+        ${["p", "c"].map((k) => `<div class="dir ${k}"><b>${k === "p" ? "Profit" : "Cash (at 31 Aug)"}</b><div class="seg" role="group" data-k="${k}">${["up", "down", "none"].map((v) => `<button type="button" data-v="${v}" aria-pressed="false">${DIR[v]}</button>`).join("")}</div></div>`).join("")}
+      </div>
+      <div class="bsq"><b>Balance sheet</b><div class="opts" id="bsopts">${bsOpts.map((o, i) => `<button type="button" class="opt" data-ok="${o.ok ? 1 : 0}" aria-pressed="false">${esc(o.t)}</button>`).join("")}</div></div>
+      <div class="act"><button type="button" class="btn" id="chk-ch" disabled>Check changed fact</button></div>
+      <div id="fb-ch"></div>
+    </section>
+
+    <div class="next"><button type="button" class="btn" id="next" disabled>${idx + 1 < deck.length ? "Next decision" : "See my results"}</button></div>
+  </article>`;
+  wire(d);
+}
+
+function wire(d) {
+  const done = { ev: false, rule: false, ch: false, marks: [false, false] };
+  const ready = () => { $("next").disabled = !(done.ev && done.rule && done.ch && done.marks.every(Boolean)); };
+
+  // 1 evidence
+  const rows = [...document.querySelectorAll("#p-ev .evrow")];
+  rows.forEach((row) => row.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
+    if (done.ev) return;
+    row.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+    $("chk-ev").disabled = !rows.every((r) => r.querySelector('[aria-pressed="true"]'));
+  })));
+  $("chk-ev").addEventListener("click", () => {
+    done.ev = true; $("chk-ev").disabled = true;
+    rows.forEach((row) => {
+      const e = row.dataset.e, truth = EV[e][1], pick = row.querySelector('[aria-pressed="true"]');
+      const ok = pick.dataset.t === truth;
+      score.ev[1]++; if (ok) score.ev[0]++; else score.missed.push(`${d.id}: ${e} is ${truth} (${TIER_WHY[truth]})`);
+      pick.classList.add(ok ? "right" : "wrong");
+      if (!ok) row.querySelector(`[data-t="${truth}"]`).classList.add("right");
+      const s = row.querySelector("small"); s.hidden = false; s.textContent = `${truth[0].toUpperCase() + truth.slice(1)}: ${TIER_WHY[truth]}`;
+    });
+    ready();
+  });
+
+  // 2 rule
+  const ropts = [...document.querySelectorAll("#p-rule .opt")];
+  ropts.forEach((b) => b.addEventListener("click", () => {
+    if (done.rule) return;
+    ropts.forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+    $("chk-rule").disabled = false;
+  }));
+  $("chk-rule").addEventListener("click", () => {
+    done.rule = true; $("chk-rule").disabled = true;
+    const pick = ropts.find((x) => x.getAttribute("aria-pressed") === "true");
+    const ok = +pick.dataset.r === d.rule;
+    score.rule[1]++; if (ok) score.rule[0]++; else score.missed.push(`${d.id}: rule is §${d.rule + 1} ${RULES[d.rule]}`);
+    ropts.forEach((x) => { if (+x.dataset.r === d.rule) x.classList.add("right"); else if (x === pick) x.classList.add("wrong"); });
+    ready();
+  });
+
+  // 3 explanations
+  document.querySelectorAll("[data-show]").forEach((b) => b.addEventListener("click", () => {
+    const i = b.dataset.show; $("model-" + i).hidden = false; $("mark-" + i).hidden = false; b.hidden = true;
+  }));
+  document.querySelectorAll("[data-mark]").forEach((b) => b.addEventListener("click", () => {
+    const i = +b.dataset.mark; if (done.marks[i]) return;
+    done.marks[i] = true;
+    score.explain[1]++; if (b.dataset.v === "1") score.explain[0]++; else score.missed.push(`${d.id}: ${d.q[i][0]}`);
+    $("mark-" + i).innerHTML = b.dataset.v === "1" ? "Marked: covered." : "Marked: revisit this one.";
+    ready();
+  }));
+
+  // 4 changed fact
+  const segs = [...document.querySelectorAll("#p-ch .seg")];
+  const bopts = [...document.querySelectorAll("#bsopts .opt")];
+  const chReady = () => { $("chk-ch").disabled = !(segs.every((s) => s.querySelector('[aria-pressed="true"]')) && bopts.some((b) => b.getAttribute("aria-pressed") === "true")); };
+  segs.forEach((s) => s.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
+    if (done.ch) return;
+    s.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false")); chReady();
+  })));
+  bopts.forEach((b) => b.addEventListener("click", () => {
+    if (done.ch) return;
+    bopts.forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false")); chReady();
+  }));
+  $("chk-ch").addEventListener("click", () => {
+    done.ch = true; $("chk-ch").disabled = true;
+    let right = 0;
+    segs.forEach((s) => {
+      const truth = d.ch[s.dataset.k], pick = s.querySelector('[aria-pressed="true"]');
+      const ok = pick.dataset.v === truth; if (ok) right++;
+      pick.classList.add(ok ? "right" : "wrong");
+      if (!ok) s.querySelector(`[data-v="${truth}"]`).classList.add("right");
+    });
+    const bpick = bopts.find((x) => x.getAttribute("aria-pressed") === "true");
+    if (bpick.dataset.ok === "1") right++;
+    bopts.forEach((x) => { if (x.dataset.ok === "1") x.classList.add("right"); else if (x === bpick) x.classList.add("wrong"); });
+    score.ch[0] += right; score.ch[1] += 3;
+    if (right < 3) score.missed.push(`${d.id} changed fact: profit ${DIR[d.ch.p].toLowerCase()}, cash ${DIR[d.ch.c].toLowerCase()}, ${d.ch.bs[0]}`);
+    $("fb-ch").innerHTML = `<div class="fb ${right === 3 ? "ok" : "no"}"><strong>${right} of 3.</strong> Profit ${DIR[d.ch.p].toLowerCase()} · cash ${DIR[d.ch.c].toLowerCase()} · ${esc(d.ch.bs[0])}. ${esc(d.ch.ex)}</div>`;
+    ready();
+  });
+
+  $("next").addEventListener("click", () => { idx++; render(); window.scrollTo({ top: $("stage").offsetTop - 60 }); });
+}
+
+function summary() {
+  const pct = (a) => (a[1] ? Math.round((a[0] / a[1]) * 100) : 0);
+  const total = [score.ev[0] + score.rule[0] + score.explain[0] + score.ch[0], score.ev[1] + score.rule[1] + score.explain[1] + score.ch[1]];
+  $("stage").innerHTML = `<section class="summary">
+    <h2>Your results · ${pct(total)}%</h2>
+    <div class="scores">
+      <div class="score"><span>Evidence sorting</span><strong>${score.ev[0]}/${score.ev[1]}</strong></div>
+      <div class="score"><span>Finance rule</span><strong>${score.rule[0]}/${score.rule[1]}</strong></div>
+      <div class="score"><span>Explanations</span><strong>${score.explain[0]}/${score.explain[1]}</strong></div>
+      <div class="score"><span>Changed facts</span><strong>${score.ch[0]}/${score.ch[1]}</strong></div>
+    </div>
+    ${score.missed.length ? `<div><h3>Revisit these</h3><ul class="review">${score.missed.map((m) => `<li>${esc(m)}</li>`).join("")}</ul></div>` : "<p>Nothing to revisit. Try another mock test: it draws five new decisions.</p>"}
+    <div class="act"><button type="button" class="btn" id="again">New mock test</button><button type="button" class="btn ghost" id="disp">Practise the 3 disputes</button></div>
+  </section>`;
+  $("again").addEventListener("click", () => start("mock"));
+  $("disp").addEventListener("click", () => start("disputes"));
+}
+
+document.querySelectorAll(".modes button").forEach((b) => b.addEventListener("click", () => start(b.dataset.mode)));
+start("mock");
+</script>
+
+</body>
+</html>

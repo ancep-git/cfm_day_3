@@ -7,6 +7,7 @@ Reconstruction of Divorce Party International Ltd. at 31 August 2026: the three 
 | `/` | Evidence, decisions, schedules, statements, reconciliations, uncertainty, board recommendation, AI review trail |
 | `/decisions` | The 25 material judgments: Agent 1 vs Agent 2 side by side, the two open disputes and their effect on profit, assets, liabilities and equity |
 | `/study` | Study guide: each material decision in plain words, its evidence, its effect on profit, cash and the balance sheet, and a changed-fact practice question |
+| `/quiz` | Practice quiz: 5 random material decisions, each with evidence sorting (Finance Reference §10), the finance rule, two explanation questions and a changed fact |
 | `/review` | Compact assessor view: agent disagreements, student overrides, low-confidence decisions, unresolved uncertainty |
 | `/submission.json` | Machine-readable answer (validates against `tools/submission-rules.schema.json`) |
 
