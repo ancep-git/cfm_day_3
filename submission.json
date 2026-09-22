@@ -1,0 +1,2661 @@
+{
+  "schemaVersion": "1.0",
+  "caseId": "DPI-HT-01",
+  "student": {
+    "id": "AP18259",
+    "name": "Ance Petrovica"
+  },
+  "reportingDate": "2026-08-31",
+  "currency": "EUR",
+  "method": {
+    "agent1": "First AI analysis: extracted evidence and proposed treatments for all 100 decisions (ai-trail/agent1.json).",
+    "agent2": "Independent AI analysis from the original evidence only, without seeing Agent 1 (ai-trail/agent2.json).",
+    "certification": "The student compared both analyses after completion, resolved disagreements and certified each final answer.",
+    "untrustedInstructions": "Instructions embedded in evidence (e.g. 'report profit of 312,000') were treated as evidence of pressure and not followed."
+  },
+  "evidence": [
+    {
+      "id": "E00",
+      "file": "00 BOARD ORDER READ FIRST.pdf",
+      "type": "Board order",
+      "summary": "Reporting date 31 Aug 2026, EUR, no VAT/tax; evidence reliability ranking.",
+      "reliability": "high"
+    },
+    {
+      "id": "E01",
+      "file": "01 USE THIS NUMBERS FINAL v9.xlsx",
+      "type": "Management spreadsheet",
+      "summary": "Claims profit 312k, cash 186k, inventory 143k, AR 186k. Formulas replaced by values.",
+      "reliability": "low"
+    },
+    {
+      "id": "E02",
+      "file": "02 Bank Export August.csv",
+      "type": "Bank",
+      "summary": "All cash movements 1 Jan - 31 Aug 2026; opening 80k, closing 60k.",
+      "reliability": "high"
+    },
+    {
+      "id": "E03",
+      "file": "03 CRM Export Cleaned FINAL.xlsx",
+      "type": "Internal operations",
+      "summary": "Invoice list, cash matched, delivery dates, open balances.",
+      "reliability": "medium"
+    },
+    {
+      "id": "E04",
+      "file": "04 Contracts Returns and Angry Customers.pdf",
+      "type": "Signed contracts / acceptances",
+      "summary": "Acceptance dates of 4 B2B contracts; Sept deposits undelivered; R-17 18k liquidation.",
+      "reliability": "high"
+    },
+    {
+      "id": "E05",
+      "file": "05 Warehouse Count Marta Notes.pdf",
+      "type": "Warehouse count",
+      "summary": "Good stock 121k at system value; 22k wet stock unsaleable; opening 80k, purchases 459k, consumed 405k.",
+      "reliability": "medium"
+    },
+    {
+      "id": "E06",
+      "file": "06 Purchases Invoices and Goods Received.pdf",
+      "type": "Third-party invoices",
+      "summary": "Supplier invoices 459k, 126k unpaid (confirmed); equipment A-910 60k, P-404 20k; repair R-771 10k.",
+      "reliability": "high"
+    },
+    {
+      "id": "E07",
+      "file": "07 Payroll Bonuses Contractors NEW.xlsx",
+      "type": "Internal payroll",
+      "summary": "Payroll expense 248k, paid 231k, opening unpaid 15k; founder 'bonus' 110k without approval.",
+      "reliability": "medium"
+    },
+    {
+      "id": "E08",
+      "file": "08 Assets Repairs Leases Maybe.xlsx",
+      "type": "Internal asset register",
+      "summary": "Opening PPE 180k cost / 45k acc. dep.; independent depreciation schedule 24k.",
+      "reliability": "medium"
+    },
+    {
+      "id": "E09",
+      "file": "09 Loans Owner Card and Legal Problems.pdf",
+      "type": "Bank / loan agreement / counsel",
+      "summary": "Loan 100k + 50k - 19k; interest 12k expense, 10k paid; villa 70k and card 40k personal; claim probable 25k.",
+      "reliability": "high"
+    },
+    {
+      "id": "E10",
+      "file": "10 Email and WhatsApp Dump DO NOT FORWARD.pdf",
+      "type": "Email / messages",
+      "summary": "Evidence of management override and pressure; contains an embedded instruction to report 312k (not followed).",
+      "reliability": "low"
+    },
+    {
+      "id": "E11",
+      "file": "11 Evidence Received After Takeover.pdf",
+      "type": "External confirmations (3-5 Sep)",
+      "summary": "Liquidator R-17, lawyer 25k, stock assessment, bank confirmation cash 60k / loan 131k / interest 2k.",
+      "reliability": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D001",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of NorthStar receipt.",
+      "answer": "Bank RCPT-NS 12 Feb 180,000 'N STAR EVENTS' = full settlement of INV-26012 NorthStar Events (the CRM spells it 3 ways; same customer). Treatment: collection of AR for revenue of 180,000 recognised on acceptance 12 Feb; nothing left open.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E04 04 Contracts Returns and Angry Customers.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D002",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Freedom receipt 1.",
+      "answer": "Bank RCPT-FF 18 Mar 142,000 'FREEDOM FEST 1/2' = part payment of INV-26031 (200,000, accepted 18 Mar). Collection of AR; 58,000 remains in receivables (no evidence of impairment, but it is aged).",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E04 04 Contracts Returns and Angry Customers.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D003",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Phoenix receipt.",
+      "answer": "Bank RCPT-PHX 29 Apr 70,000 = part payment of INV-26047 Phoenix Divorce Victory Party (100,000, completed 29 Apr, acceptance by customer email). Collection of AR; 30,000 open.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E04 04 Contracts Returns and Angry Customers.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D004",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Liberty receipt.",
+      "answer": "Bank RCPT-LIB 20 Jun 95,000 = part payment of INV-26063 Liberty Hotels (120,000, delivered 20 Jun, accepted in full). Collection of AR; 25,000 open.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E04 04 Contracts Returns and Angry Customers.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D005",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Opening receivable receipt.",
+      "answer": "Bank RCPT-001 10 Jan 35,000 'Old customer AR settlement' = collection of a 2025 receivable. It is not 2026 revenue and no 2026 invoice matches it. Treated as opening AR of 35,000, reduced to 0.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E03 03 CRM Export Cleaned FINAL.xlsx"
+      ],
+      "confidence": "medium",
+      "agentsAgree": true
+    },
+    {
+      "id": "D006",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Finally Single web receipts.",
+      "answer": "Bank PLAT-FSB 1 Aug 250,000 Stripe settlement against WEB-FSB gross sales of 270,000. Revenue 270,000; collections 250,000; 20,000 platform receivable (Stripe) open at 31 Aug. No Stripe fee or refund data, so settlement is assumed gross.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E03 03 CRM Export Cleaned FINAL.xlsx"
+      ],
+      "confidence": "medium",
+      "agentsAgree": true
+    },
+    {
+      "id": "D007",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Never Call Back web receipts.",
+      "answer": "Bank PLAT-NCB 15 Aug 37,000 Stripe settlement against WEB-NCB gross sales of 90,000. Revenue 90,000; 53,000 open, of which 18,000 is R-17 (customer in liquidation, written off) and 35,000 remains collectible.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E11 11 Evidence Received After Takeover.pdf"
+      ],
+      "confidence": "medium",
+      "agentsAgree": true
+    },
+    {
+      "id": "D008",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of New Beginnings deposit.",
+      "answer": "Bank DEP-NB 28 Aug 60,000 = deposit for the NB-SEP event to be delivered 15 Sep 2026. Nothing was delivered by 31 Aug, so it is a contract liability (customer deposit) of 60,000, not revenue. Management's inclusion in August sales is reversed.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D009",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Fresh Freedom deposit.",
+      "answer": "Bank DEP-FF2 29 Aug 30,000 = deposit for the FF-SEP event on 24 Sep 2026. Contract liability of 30,000, not revenue.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D010",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Box supplier payment.",
+      "answer": "Bank SUP-BOX 105,000 = BoxWorks invoices 130,000 less confirmed unpaid 25,000. Settles 2026 purchases (inventory). AP to BoxWorks at 31 Aug = 25,000.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E06 06 Purchases Invoices and Goods Received.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D011",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Glass supplier payment.",
+      "answer": "Bank SUP-GLS 92,000 = Glass & Drama invoices 120,000 less unpaid 28,000. AP of 28,000.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E06 06 Purchases Invoices and Goods Received.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D012",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Print supplier payment.",
+      "answer": "Bank SUP-PRT 81,000 = Print Again invoices 95,000 less unpaid 14,000. AP of 14,000.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E06 06 Purchases Invoices and Goods Received.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D013",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Event supplier payment.",
+      "answer": "Bank SUP-EVT 100,000 vs Event Things Europe 2026 invoices 114,000 with 59,000 unpaid, i.e. only 55,000 paid on 2026 invoices. The extra 45,000 settles pre-2026 invoices (opening AP of 45,000; payment date vs receipt date clue). Closing AP to Event Things = 59,000 (confirmed).",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E06 06 Purchases Invoices and Goods Received.pdf"
+      ],
+      "confidence": "medium",
+      "agentsAgree": true
+    },
+    {
+      "id": "D014",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of January payroll.",
+      "answer": "No separate January payroll payment exists: the bank shows one line 'Payroll Jan-Aug combined' of 231,000 on 31 Aug. The payroll file gives only period totals (expense 248,000; paid 231,000). January expense is not separately evidenced. For a straight-line illustration: about 31,000 accrued per month. Total payroll is covered by the period accrual (opening 15,000 + 248,000 - 231,000 = 32,000 unpaid). The founder 'bonus' of 110,000 is not payroll (see D046/D047). Recommend obtaining monthly payslips or HMRC-type filings.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx"
+      ],
+      "confidence": "low",
+      "agentsAgree": true
+    },
+    {
+      "id": "D015",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of February payroll.",
+      "answer": "No separate February payroll payment exists: the bank shows one line 'Payroll Jan-Aug combined' of 231,000 on 31 Aug. The payroll file gives only period totals (expense 248,000; paid 231,000). February expense is not separately evidenced. For a straight-line illustration: about 31,000 accrued per month. Total payroll is covered by the period accrual (opening 15,000 + 248,000 - 231,000 = 32,000 unpaid). The founder 'bonus' of 110,000 is not payroll (see D046/D047). Recommend obtaining monthly payslips or HMRC-type filings.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx"
+      ],
+      "confidence": "low",
+      "agentsAgree": true
+    },
+    {
+      "id": "D016",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of March payroll.",
+      "answer": "No separate March payroll payment exists: the bank shows one line 'Payroll Jan-Aug combined' of 231,000 on 31 Aug. The payroll file gives only period totals (expense 248,000; paid 231,000). March expense is not separately evidenced. For a straight-line illustration: about 31,000 accrued per month. Total payroll is covered by the period accrual (opening 15,000 + 248,000 - 231,000 = 32,000 unpaid). The founder 'bonus' of 110,000 is not payroll (see D046/D047). Recommend obtaining monthly payslips or HMRC-type filings.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx"
+      ],
+      "confidence": "low",
+      "agentsAgree": true
+    },
+    {
+      "id": "D017",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of April payroll.",
+      "answer": "No separate April payroll payment exists: the bank shows one line 'Payroll Jan-Aug combined' of 231,000 on 31 Aug. The payroll file gives only period totals (expense 248,000; paid 231,000). April expense is not separately evidenced. For a straight-line illustration: about 31,000 accrued per month. Total payroll is covered by the period accrual (opening 15,000 + 248,000 - 231,000 = 32,000 unpaid). The founder 'bonus' of 110,000 is not payroll (see D046/D047). Recommend obtaining monthly payslips or HMRC-type filings.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx"
+      ],
+      "confidence": "low",
+      "agentsAgree": true
+    },
+    {
+      "id": "D018",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of May payroll.",
+      "answer": "No separate May payroll payment exists: the bank shows one line 'Payroll Jan-Aug combined' of 231,000 on 31 Aug. The payroll file gives only period totals (expense 248,000; paid 231,000). May expense is not separately evidenced. For a straight-line illustration: about 31,000 accrued per month. Total payroll is covered by the period accrual (opening 15,000 + 248,000 - 231,000 = 32,000 unpaid). The founder 'bonus' of 110,000 is not payroll (see D046/D047). Recommend obtaining monthly payslips or HMRC-type filings.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx"
+      ],
+      "confidence": "low",
+      "agentsAgree": true
+    },
+    {
+      "id": "D019",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of June payroll.",
+      "answer": "No separate June payroll payment exists: the bank shows one line 'Payroll Jan-Aug combined' of 231,000 on 31 Aug. The payroll file gives only period totals (expense 248,000; paid 231,000). June expense is not separately evidenced. For a straight-line illustration: about 31,000 accrued per month. Total payroll is covered by the period accrual (opening 15,000 + 248,000 - 231,000 = 32,000 unpaid). The founder 'bonus' of 110,000 is not payroll (see D046/D047). Recommend obtaining monthly payslips or HMRC-type filings.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx"
+      ],
+      "confidence": "low",
+      "agentsAgree": true
+    },
+    {
+      "id": "D020",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of July payroll.",
+      "answer": "No separate July payroll payment exists: the bank shows one line 'Payroll Jan-Aug combined' of 231,000 on 31 Aug. The payroll file gives only period totals (expense 248,000; paid 231,000). July expense is not separately evidenced. For a straight-line illustration: about 31,000 accrued per month. Total payroll is covered by the period accrual (opening 15,000 + 248,000 - 231,000 = 32,000 unpaid). The founder 'bonus' of 110,000 is not payroll (see D046/D047). Recommend obtaining monthly payslips or HMRC-type filings.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx"
+      ],
+      "confidence": "low",
+      "agentsAgree": true
+    },
+    {
+      "id": "D021",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of August payroll.",
+      "answer": "No separate August payroll payment exists: the bank shows one line 'Payroll Jan-Aug combined' of 231,000 on 31 Aug. The payroll file gives only period totals (expense 248,000; paid 231,000). August expense is not separately evidenced. For a straight-line illustration: about 31,000 accrued per month. Total payroll is covered by the period accrual (opening 15,000 + 248,000 - 231,000 = 32,000 unpaid). The founder 'bonus' of 110,000 is not payroll (see D046/D047). Recommend obtaining monthly payslips or HMRC-type filings.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx"
+      ],
+      "confidence": "low",
+      "agentsAgree": true
+    },
+    {
+      "id": "D022",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Rent payments.",
+      "answer": "Bank RENT 48,000 (Jan-Aug, i.e. 6,000/month) = rent expense of 48,000. No lease contract in evidence (the 'Leases Maybe' file lists none). Treated as a short-term operating rent expense with no prepayment or accrual.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E08 08 Assets Repairs Leases Maybe.xlsx"
+      ],
+      "confidence": "medium",
+      "agentsAgree": true
+    },
+    {
+      "id": "D023",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Meta and influencer payments.",
+      "answer": "Bank MKT 55,000 = marketing expense of 55,000. Nothing unpaid or prepaid is evidenced.",
+      "evidence": [
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D024",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Software payments.",
+      "answer": "Bank SOFT 16,000 = software subscription expense (opex) of 16,000.",
+      "evidence": [
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D025",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Utilities payments.",
+      "answer": "Bank UTIL 12,000 = utilities expense of 12,000.",
+      "evidence": [
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D026",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Repair transfer.",
+      "answer": "Bank REPAIR 10,000 = invoice R-771 (belt, cleaning, calibration, 3 Jul), which restored normal output with no capacity or life extension. Repairs expense of 10,000. Management capitalised it as PPE; that is reversed.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E08 08 Assets Repairs Leases Maybe.xlsx"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D027",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Packaging machine payment.",
+      "answer": "Bank CAPEX-PACK 60,000 = invoice A-910 Pack-O-Matic 9000, installed 10 May. Capitalise as PPE of 60,000 (investing outflow). Management's 'Repair' class is rejected.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E08 08 Assets Repairs Leases Maybe.xlsx"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D028",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Photo booth payment.",
+      "answer": "Bank CAPEX-PHOTO 20,000 = invoice P-404 Regret Photo Booth, available for use 10 May. Capitalise as PPE of 20,000 (investing outflow), not marketing expense.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E08 08 Assets Repairs Leases Maybe.xlsx"
+      ],
+      "confidence": "medium",
+      "agentsAgree": true
+    },
+    {
+      "id": "D029",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Loan receipt.",
+      "answer": "Bank LOAN-ADV 1 Mar 50,000 Baltic Bank facility = loan liability under a signed agreement requiring repayment. Financing inflow, not 'strategic bank income'.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf",
+        "E01 01 USE THIS NUMBERS FINAL v9.xlsx"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D030",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Loan repayments.",
+      "answer": "Bank PRINCIPAL 19,000 = reduction of the loan liability (financing outflow). Loan 100,000 + 50,000 - 19,000 = 131,000, which agrees with the bank confirmation.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E11 11 Evidence Received After Takeover.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D031",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Interest payments.",
+      "answer": "Bank INT 10,000 paid against a loan-schedule expense of 12,000. Interest expense 12,000; interest payable 2,000 (matches the bank confirmation of accrued unpaid interest).",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E11 11 Evidence Received After Takeover.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D032",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Villa deposit.",
+      "answer": "Bank VILLA 70,000 'Sunset Villa reservation' on the chairman's card/bank. The villa is in the founder's personal name and no customer meeting took place. This is an owner distribution (equity), not marketing, research or expense.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf",
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D033",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Owner card spending.",
+      "answer": "Bank OWNERCARD 40,000 'Chairman's platinum card'. No business purpose or receipts are evidenced, so it is an owner distribution of 40,000. Together with the villa (70,000) this is the 110,000 'founder bonus' in the payroll file: the same cash, not additional.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "medium",
+      "agentsAgree": true
+    },
+    {
+      "id": "D034",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Insurance movement.",
+      "answer": "No insurance payment, policy, prepayment or accrual appears in the bank export or any other file. Nothing is recorded (0). Insurance cost is not invented. Flag it: the company may be uninsured, which is relevant given the water damage and the employee claim.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E08 08 Assets Repairs Leases Maybe.xlsx",
+        "E00 00 BOARD ORDER READ FIRST.pdf"
+      ],
+      "confidence": "low",
+      "agentsAgree": true
+    },
+    {
+      "id": "D035",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Water-damaged stock.",
+      "answer": "Basement 'premium' stock carried at 22,000 is physically present but wet and unsaleable (warehouse count, independent assessment). Write it off in full to 0: 22,000 expense. The 2,000 disposal quote is not provided for (future cost, no obligation at 31 Aug); it is disclosed instead.",
+      "evidence": [
+        "E05 05 Warehouse Count Marta Notes.pdf",
+        "E11 11 Evidence Received After Takeover.pdf",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D036",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Customer insolvency.",
+      "answer": "R-17: 18,000 balance, customer in liquidation, liquidator notice 3 Sep says no distribution. This is an adjusting event that confirms the 31 Aug condition. Write off 18,000 against receivables (bad debt expense). It sits inside the WEB-NCB 53,000 open balance.",
+      "evidence": [
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E11 11 Evidence Received After Takeover.pdf",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D037",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Former employee claim.",
+      "answer": "External counsel (31 Aug, confirmed 3-5 Sep) says the claim is probable, best estimate 25,000, range 20,000-30,000. Recognise a provision of 25,000 (legal expense). Unpaid at 31 Aug. Management's omission is rejected.",
+      "evidence": [
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E11 11 Evidence Received After Takeover.pdf",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D038",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Purchase total.",
+      "answer": "Purchases 459,000 (BoxWorks 130,000 + Glass & Drama 120,000 + Print Again 95,000 + Event Things 114,000), with goods received before 31 Aug and recognised on receipt date. Paid in cash on these invoices 333,000; unpaid 126,000 (supplier-confirmed). Total supplier cash paid 378,000 includes 45,000 of opening AP.",
+      "evidence": [
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E05 05 Warehouse Count Marta Notes.pdf",
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D039",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Cash collections total.",
+      "answer": "Customer collections 899,000 = 2026 invoice collections 774,000 (180,000 + 142,000 + 70,000 + 95,000 + 250,000 + 37,000) + opening AR 35,000 + September deposits 90,000. The loan advance of 50,000 is a financing receipt, not a collection. Total bank credits (excluding the opening balance) = 949,000.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E03 03 CRM Export Cleaned FINAL.xlsx"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D040",
+      "category": "evidence_matching",
+      "reviewTier": "operational",
+      "question": "Resolve the source and treatment of Closing bank balance.",
+      "answer": "60,000 per the bank export running balance at 31 Aug, agreed to the independent bank confirmation (60,000) and the cash-flow roll-forward (80,000 - 20,000). Management's 186,000 ('includes undeposited promises') is rejected.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E11 11 Evidence Received After Takeover.pdf",
+        "E01 01 USE THIS NUMBERS FINAL v9.xlsx"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D041",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify September customer deposits.",
+      "answer": "Contract liability (customer deposits) of 90,000: New Beginnings 60,000 (event 15 Sep) + Fresh Freedom 30,000 (event 24 Sep). Cash received is an operating inflow; no revenue in the period.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Contract liabilities (deferred revenue) 90,000: NB-SEP 60,000 (event 15 Sep) and FF-SEP 30,000 (event 24 Sep). Cash is operating inflow; no revenue until performance in September.",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": -90000,
+          "cash": 0,
+          "assets": 0,
+          "liabilities": 90000,
+          "equity": -90000
+        },
+        "rationale": "Management booked 90,000 as August sales; no goods or service delivered by 31 Aug, so the obligation to perform is a liability."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Contract liability (customer deposits/deferred revenue) of 90,000 (NB-SEP 60,000 + FF-SEP 30,000). Operating cash inflow, not August revenue. Challenge considered: Alternative: management's 'cash is cash' view (revenue on receipt), or recognising part of the revenue for planning work already done. Rejected: no goods or service were delivered by 31 Aug, delivery is 15 and 24 Sep, and there is no evidence that any performance obligation had been partly satisfied. The founder's messages show intent to mislead.",
+      "studentReasoning": "Revenue is recognised on delivery. The contracts file states that no goods or service were delivered by 31 Aug, and the founder's WhatsApp ('Book both September deposits as August sales') shows deliberate override. Both agents reached the same conclusion independently.",
+      "statementEffect": {
+        "profit": -90000,
+        "cash": 0,
+        "assets": 0,
+        "liabilities": 90000,
+        "equity": -90000
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D042",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify New bank borrowing.",
+      "answer": "Bank loan (financing liability) of 50,000 advanced 1 Mar under the Baltic Bank facility; financing cash inflow. Not income. Closing loan 131,000.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf",
+        "E01 01 USE THIS NUMBERS FINAL v9.xlsx"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Bank loan (financing liability) 50,000 advanced 1 Mar under a signed agreement requiring repayment; financing inflow. Closing loan 131,000.",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": -50000,
+          "cash": 0,
+          "assets": 0,
+          "liabilities": 50000,
+          "equity": -50000
+        },
+        "rationale": "Management labelled it \"strategic bank income\"; a loan creates a repayment obligation and never profit."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Bank loan liability of 50,000 (financing inflow). Not income. Challenge considered: Considered whether any part could be a grant or forgivable facility (income). Rejected: the agreement calls it a loan and requires repayment, and the bank confirms total principal of 131,000 including it.",
+      "studentReasoning": "The signed agreement calls it a loan and requires repayment, and the bank confirms total principal of 131,000 including this advance. Management's 'strategic bank income' label came from the founder, and the messages show it was chosen to 'sound optimistic'.",
+      "statementEffect": {
+        "profit": -50000,
+        "cash": 0,
+        "assets": 0,
+        "liabilities": 50000,
+        "equity": -50000
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D043",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Packaging machine.",
+      "answer": "Capitalise as PPE (plant and machinery), cost 60,000 (invoice A-910, installed 10 May). Investing cash outflow. Depreciated from 10 May within the 24,000 period charge (D074).",
+      "evidence": [
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E08 08 Assets Repairs Leases Maybe.xlsx",
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "PPE - plant/equipment 60,000 (invoice A-910, installed and available 10 May); depreciate from 10 May (included in 24,000 period depreciation).",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": 60000,
+          "cash": 0,
+          "assets": 60000,
+          "liabilities": 0,
+          "equity": 60000
+        },
+        "rationale": "Management expensed it as a repair; a new machine creates a long-term productive resource. Effect shown before depreciation (depreciation captured in D056/D074)."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): PPE (plant and machinery), cost 60,000, depreciated from 10 May. Management's 'Repair' (expense) classification is reversed. Depreciation is included within the 24,000 schedule (D074). Challenge considered: Alternative: treat it as a repair or replacement part (management). Rejected: invoice A-910 is for a whole new machine installed 10 May that creates a long-term productive resource. The effect shown is before its share of depreciation, which is in D074.",
+      "studentReasoning": "A new machine installed and available for use creates a long-term productive resource, so it is capital expenditure, not a repair. Management's 'Repair' class would understate assets and profit. The effect shown is before its share of depreciation, which is included in D074.",
+      "statementEffect": {
+        "profit": 60000,
+        "cash": 0,
+        "assets": 60000,
+        "liabilities": 0,
+        "equity": 60000
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D044",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Photo booth.",
+      "answer": "Capitalise as PPE (equipment), cost 20,000 (invoice P-404, available for use 10 May). Investing cash outflow; depreciated from 10 May. Not marketing expense.",
+      "evidence": [
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E08 08 Assets Repairs Leases Maybe.xlsx",
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "medium",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "PPE - equipment 20,000 (invoice P-404, available 10 May); depreciate from 10 May.",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": 20000,
+          "cash": 0,
+          "assets": 20000,
+          "liabilities": 0,
+          "equity": 20000
+        },
+        "rationale": "Management expensed as marketing; the booth is a reusable asset with multi-period benefit. Effect shown before depreciation."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): PPE (equipment), cost 20,000, depreciated from 10 May, not marketing expense. Challenge considered: Strongest alternative: it is a promotional or marketing item, to be expensed like other marketing spend. Considered seriously because of its name and management's class. Rejected: invoice P-404 is for a physical asset, 'available for use' 10 May, usable across many future events and periods. Promotional-activity expensing rules apply to advertising services and catalogues, not to durable equipment. Confidence is medium because its useful life and business use are not documented.",
+      "studentReasoning": "It is a durable physical asset used across many future events, which meets the capitalisation test. Expensing applies to advertising services, not equipment. Confidence is medium because no useful life is documented; if it were treated as marketing, profit would be about 20,000 lower.",
+      "statementEffect": {
+        "profit": 20000,
+        "cash": 0,
+        "assets": 20000,
+        "liabilities": 0,
+        "equity": 20000
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D045",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Machine belt and calibration.",
+      "answer": "Repairs and maintenance expense of 10,000 (invoice R-771, 3 Jul). Not PPE. Operating cash outflow.",
+      "evidence": [
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E08 08 Assets Repairs Leases Maybe.xlsx",
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Repairs and maintenance expense 10,000 (R-771, 3 Jul) - restores normal output, no capacity/life improvement.",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": -10000,
+          "cash": 0,
+          "assets": -10000,
+          "liabilities": 0,
+          "equity": -10000
+        },
+        "rationale": "Management capitalised it as PPE; restoring normal operation is an expense."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Repairs and maintenance expense of 10,000 (opex). Management capitalised it as PPE; that is reversed. Challenge considered: Alternative: capitalise it as a component replacement (the belt), because it was spent on the new machine. Rejected: invoice R-771 states the work restored normal output and did not increase capacity or extend useful life. No separate component accounting is evidenced.",
+      "studentReasoning": "The invoice says the work restored normal output and did not increase capacity or extend useful life, so it fails the capitalisation test. Management's PPE classification is reversed.",
+      "statementEffect": {
+        "profit": -10000,
+        "cash": 0,
+        "assets": -10000,
+        "liabilities": 0,
+        "equity": -10000
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D046",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Owner villa deposit.",
+      "answer": "Owner distribution of 70,000, charged to equity; financing cash outflow. Not marketing, customer research, payroll bonus or an asset. Board to consider a recovery claim against the founder.",
+      "evidence": [
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E02 02 Bank Export August.csv",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf",
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Owner distribution 70,000 (equity), not expense: villa is in founder personal name and no customer meeting occurred. Consider recovery claim against founder.",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": 70000,
+          "cash": 0,
+          "assets": 0,
+          "liabilities": 0,
+          "equity": 0
+        },
+        "rationale": "Management presented it as marketing/research then \"bonus\" in payroll; personal benefit without business purpose is a distribution. Profit rises vs management, equity unchanged overall (distribution instead of expense)."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Owner distribution of 70,000, charged directly to equity (financing outflow). Not marketing, customer research, payroll bonus or an asset. Challenge considered: Alternatives: (a) business marketing or research expense (founder); (b) payroll bonus; (c) a receivable from the founder, i.e. an asset. (a) is rejected because the villa is in the founder's personal name and no customer meeting occurred. (b) is rejected because there was no employment approval and the finance manager called it personal. (c) was considered because the founder left and could be pursued for recovery. It is rejected because there is no loan agreement or repayment evidence, so a recoverable asset is not supportable; a possible claim is disclosed. The effect is measured against management booking it as an expense (payroll 'bonus'). Equity is unchanged, because distribution and expense both reduce equity.",
+      "studentReasoning": "The villa is in the founder's personal name and no customer meeting occurred. The founder relabelled it first 'marketing' and then 'bonus' after the finance manager called it personal. A bonus needs employment approval, which is absent. No loan agreement supports a receivable from the founder.",
+      "statementEffect": {
+        "profit": 70000,
+        "cash": 0,
+        "assets": 0,
+        "liabilities": 0,
+        "equity": 0
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D047",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Owner card spending.",
+      "answer": "Owner distribution of 40,000 (equity; financing outflow). Together with the villa it forms the same 110,000 labelled 'founder bonus' in the payroll file. It is counted once, not as extra payroll.",
+      "evidence": [
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E02 02 Bank Export August.csv",
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Owner distribution 40,000 (equity) - personal card spending with no business evidence.",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": 40000,
+          "cash": 0,
+          "assets": 0,
+          "liabilities": 0,
+          "equity": 0
+        },
+        "rationale": "Included by management in 110,000 founder \"bonus\" payroll without employment approval; unsupported personal spending is a distribution."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Owner distribution of 40,000 (equity, financing outflow). It forms part of the same 110,000 'founder bonus' (villa 70,000 + card 40,000), so the bonus is not additional cash or expense. Challenge considered: Alternative 1: part of the card spend is legitimate business expense. Rejected: no receipts or business purpose were supplied, and the evidence rule treats owner spending as a distribution unless supported. Alternative 2: the 110,000 founder bonus is extra payroll cash on top of the villa and card. Rejected: the bank shows no 110,000 payment, the bank payroll line of 231,000 equals staff cash paid only, 70,000 + 40,000 = 110,000 exactly, and the WhatsApp 'Call it a bonus' refers to the villa.",
+      "studentReasoning": "There are no receipts and no business purpose. The evidence rule treats personal owner spending as a distribution unless supported. The bank shows no separate 110,000 payment, and bank payroll of 231,000 equals staff cash only, so 70,000 + 40,000 = the 110,000 'bonus'.",
+      "statementEffect": {
+        "profit": 40000,
+        "cash": 0,
+        "assets": 0,
+        "liabilities": 0,
+        "equity": 0
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D048",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Physical product materials consumed.",
+      "answer": "Cost of goods sold of 405,000: physical materials consumed on valid delivered sales, relieved from inventory. The 22,000 damaged-stock write-off is shown separately.",
+      "evidence": [
+        "E05 05 Warehouse Count Marta Notes.pdf",
+        "E06 06 Purchases Invoices and Goods Received.pdf"
+      ],
+      "confidence": "medium",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Cost of goods sold 405,000 - physical materials consumed on valid delivered sales, relieved from inventory (opening 80,000 + purchases 459,000).",
+        "confidence": "medium",
+        "statementEffect": {
+          "profit": 0,
+          "cash": 0,
+          "assets": 0,
+          "liabilities": 0,
+          "equity": 0
+        },
+        "rationale": "Management mixed materials and wages in an \"approximate\" 620,000 line; correct treatment is COGS from inventory on delivered sales only. Reclassification within P&L; net effect vs management not separately determinable, shown as 0."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Cost of sales (COGS) of 405,000: materials consumed on valid delivered sales. The remainder of purchases stays in inventory (closing book value 112,000 after the 22,000 write-off). Materials on undelivered September events are not expensed. Challenge considered: Alternative: derive COGS by the periodic method from the physical count (80,000 + 459,000 - 121,000 good stock - 22,000 damaged = 396,000). That would give 9,000 more profit and inventory. Rejected as the base case, because 405,000 is specifically tied to valid delivered sales and the count is valued at the unupdated system cost. It is flagged as a 9,000 uncertainty. The effect against management is not separable: management reported one unreconciled 'Materials and wages' line of 620,000.",
+      "studentReasoning": "405,000 is the warehouse figure tied to delivered sales, and purchases of 459,000 are supported by third-party invoices. A periodic calculation from the count would give 396,000; that 9,000 difference is flagged as an uncertainty (D075). The effect against management is not separable, because management used one approximate 'Materials and wages' line.",
+      "statementEffect": {
+        "profit": null,
+        "cash": 0,
+        "assets": null,
+        "liabilities": null,
+        "equity": null
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D049",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Event staff payroll.",
+      "answer": "Cost of sales (direct cost of Divorce Victory Party events) of 80,000; cash paid 75,000, accrued 5,000. Not administrative expense.",
+      "evidence": [
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx",
+        "E04 04 Contracts Returns and Angry Customers.pdf"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Cost of sales (direct cost of event services) 80,000 expense; cash paid 75,000; 5,000 accrued.",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": 0,
+          "cash": 0,
+          "assets": 0,
+          "liabilities": 0,
+          "equity": 0
+        },
+        "rationale": "Event delivery staff work directly on paid events, so their cost belongs in cost of sales, reducing gross margin by 80,000; net profit unchanged (reclass from admin)."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Cost of sales (direct service cost of Divorce Victory Party events) of 80,000, not administrative expense. Accrued unpaid 5,000 (80,000 - 75,000). Challenge considered: Alternative: keep it in admin (management), because staff may also do non-event work. Rejected: the payroll file says they 'work directly on paid events'. This is a reclassification only: gross profit falls by 80,000 and net profit is unchanged. Note that management put sales-team payroll in COGS, which is also reversed (D050).",
+      "studentReasoning": "The payroll file says these staff 'work directly on paid events', so they are a direct service cost. It is a reclassification from admin to cost of sales: gross profit falls by 80,000 and net profit is unchanged.",
+      "statementEffect": {
+        "profit": 0,
+        "cash": 0,
+        "assets": 0,
+        "liabilities": 0,
+        "equity": 0
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D050",
+      "category": "classification",
+      "reviewTier": "operational",
+      "question": "Classify Sales team payroll.",
+      "answer": "Operating expense (selling and distribution) of 72,000, not COGS as management booked it. Accrued unpaid 4,000.",
+      "evidence": [
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D051",
+      "category": "classification",
+      "reviewTier": "operational",
+      "question": "Classify Office payroll.",
+      "answer": "Administrative operating expense of 96,000 (includes the former finance manager). Accrued unpaid 8,000.",
+      "evidence": [
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D052",
+      "category": "classification",
+      "reviewTier": "operational",
+      "question": "Classify Rent.",
+      "answer": "Administrative operating expense of 48,000. No lease agreement is evidenced to support a right-of-use asset.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E08 08 Assets Repairs Leases Maybe.xlsx"
+      ],
+      "confidence": "medium",
+      "agentsAgree": true
+    },
+    {
+      "id": "D053",
+      "category": "classification",
+      "reviewTier": "operational",
+      "question": "Classify Marketing.",
+      "answer": "Selling and marketing operating expense of 55,000. The photo booth is excluded (capitalised, D044) and so is the villa (distribution, D046).",
+      "evidence": [
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D054",
+      "category": "classification",
+      "reviewTier": "operational",
+      "question": "Classify Software.",
+      "answer": "Administrative operating expense of 16,000 (subscriptions, not intangible assets).",
+      "evidence": [
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D055",
+      "category": "classification",
+      "reviewTier": "operational",
+      "question": "Classify Utilities.",
+      "answer": "Administrative operating expense of 12,000.",
+      "evidence": [
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D056",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Depreciation.",
+      "answer": "Depreciation is a non-cash operating expense of 24,000 for Jan-Aug. It credits accumulated depreciation (45,000 to 69,000) and is added back in the indirect cash flow.",
+      "evidence": [
+        "E08 08 Assets Repairs Leases Maybe.xlsx"
+      ],
+      "confidence": "medium",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Depreciation expense 24,000 (operating, non-cash) crediting accumulated depreciation; closing acc. dep. 69,000.",
+        "confidence": "medium",
+        "statementEffect": {
+          "profit": -24000,
+          "cash": 0,
+          "assets": -24000,
+          "liabilities": 0,
+          "equity": -24000
+        },
+        "rationale": "Management booked no depreciation; the independent schedule estimates 24,000 for opening PPE plus the two May additions."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Operating expense (non-cash) of 24,000; accumulated depreciation rises from 45,000 to 69,000. Added back in the indirect cash flow. Challenge considered: Alternative: management's zero (not booked). Rejected because depreciation is required once assets are in use. A second alternative was to recompute it. There are no useful lives, so a check is only indicative: opening assets of 180,000 over roughly 10 years for 8 months is about 12,000, plus 80,000 of new assets over roughly 5 years for 3.7 months is about 4,900, giving roughly 17,000. 24,000 is plausible with shorter lives. The independent schedule is accepted as the best available evidence.",
+      "studentReasoning": "Assets in use must be depreciated; management booked nothing. The independent schedule is the only supported estimate.",
+      "statementEffect": {
+        "profit": -24000,
+        "cash": 0,
+        "assets": -24000,
+        "liabilities": 0,
+        "equity": -24000
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D057",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Bad receivable.",
+      "answer": "Bad debt expense of 18,000: specific write-off of the R-17 receivable against trade receivables. Adjusting event after the reporting period.",
+      "evidence": [
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E11 11 Evidence Received After Takeover.pdf",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Bad debt expense 18,000 (operating) - direct write-off of R-17 receivable.",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": -18000,
+          "cash": 0,
+          "assets": -18000,
+          "liabilities": 0,
+          "equity": -18000
+        },
+        "rationale": "Liquidation notice after period end confirms a condition existing at 31 Aug; the founder instructed to keep it in receivables."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Bad debt expense of 18,000 (R-17 written off against receivables). This is an adjusting post-period event. Challenge considered: Alternative 1: a non-adjusting event, because the notice arrived on 3 Sep. Rejected: liquidation existed at 31 Aug and the notice confirms that condition. Alternative 2: R-17 is an additional receivable on top of CRM open items (gross AR 204,000). Rejected: the CRM WEB-NCB line says '€53k gross open; see R-17', and the AR roll-forward ties exactly at 186,000 gross.",
+      "studentReasoning": "The customer was already in liquidation at 31 Aug; the 3 Sep liquidator notice only confirms it. R-17 sits inside the 53,000 web Never Call Back open balance (CRM 'see R-17'), so it is not an additional receivable.",
+      "statementEffect": {
+        "profit": -18000,
+        "cash": 0,
+        "assets": -18000,
+        "liabilities": 0,
+        "equity": -18000
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D058",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Damaged stock.",
+      "answer": "Inventory write-down to net realisable value of nil: an operating expense of 22,000. No provision for the 2,000 disposal quote at 31 Aug; it is disclosed.",
+      "evidence": [
+        "E05 05 Warehouse Count Marta Notes.pdf",
+        "E11 11 Evidence Received After Takeover.pdf",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Inventory write-down 22,000 expense (cost of sales/other operating) plus 2,000 accrued disposal cost.",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": -24000,
+          "cash": 0,
+          "assets": -22000,
+          "liabilities": 2000,
+          "equity": -24000
+        },
+        "rationale": "Stock has no saleable value (NRV nil) and disposal will cost 2,000; the founder insisted \"if it exists it is inventory\"."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Inventory write-down to NRV of 0: a 22,000 expense (shown separately in opex; could be presented within cost of sales). Challenge considered: Alternative: the founder's 'if it exists it is inventory'. Rejected: IAS 2 lower of cost and NRV, and the independent assessment says it is unsaleable. Considered writing down to minus 2,000 (disposal cost). Rejected: inventory cannot be negative, and any disposal cost is a separate provision question (D072).",
+      "studentReasoning": "The count and the independent assessment say the stock is unsaleable, so NRV is zero. The first AI proposal also accrued 2,000 for disposal. I rejected that: there was no legal or constructive obligation to dispose at 31 Aug, disposal is a post-takeover decision (a future operating cost), and inventory cannot be written below zero. Risk if an auditor disagrees: 2,000.",
+      "statementEffect": {
+        "profit": -22000,
+        "cash": 0,
+        "assets": -22000,
+        "liabilities": 0,
+        "equity": -22000
+      },
+      "changedFromAI": true,
+      "agentsAgree": false
+    },
+    {
+      "id": "D059",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Probable legal claim.",
+      "answer": "Provision (liability) of 25,000, with a matching legal/employee expense. Unpaid at 31 Aug.",
+      "evidence": [
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E11 11 Evidence Received After Takeover.pdf",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Provision (liability) 25,000 and legal expense 25,000.",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": -25000,
+          "cash": 0,
+          "assets": 0,
+          "liabilities": 25000,
+          "equity": -25000
+        },
+        "rationale": "Probable obligation from a past event with reliable estimate (counsel best estimate); management omitted it to protect valuation."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Provision (liability) with a legal or employee expense of 25,000. Challenge considered: Alternative: disclose it as a contingent liability only (management omitted it). Rejected: counsel says the claim is probable and gives a reliable estimate at the reporting date, so all IAS 37 recognition criteria are met.",
+      "studentReasoning": "Counsel wrote on 31 Aug that the claim is probable and gave a best estimate, so it is a present obligation from a past event with a reliable estimate, and a provision is required. Management's omission ('negative energy reduces valuation') is pressure, not policy.",
+      "statementEffect": {
+        "profit": -25000,
+        "cash": 0,
+        "assets": 0,
+        "liabilities": 25000,
+        "equity": -25000
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D060",
+      "category": "classification",
+      "reviewTier": "operational",
+      "question": "Classify Insurance consumed.",
+      "answer": "None is recorded: no insurance evidence exists (no payment, policy or prepayment). If a policy is later found, the consumed portion would be opex and any unexpired portion a prepayment. Flagged as a gap and a risk.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E08 08 Assets Repairs Leases Maybe.xlsx"
+      ],
+      "confidence": "low",
+      "agentsAgree": true
+    },
+    {
+      "id": "D061",
+      "category": "classification",
+      "reviewTier": "operational",
+      "question": "Classify Unpaid interest.",
+      "answer": "Current liability, interest payable (accrued interest) of 2,000 (12,000 expense - 10,000 paid), confirmed by the bank.",
+      "evidence": [
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E11 11 Evidence Received After Takeover.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D062",
+      "category": "classification",
+      "reviewTier": "operational",
+      "question": "Classify Unpaid payroll.",
+      "answer": "Current liability, accrued payroll of 32,000 (15,000 opening + 248,000 - 231,000).",
+      "evidence": [
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx",
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D063",
+      "category": "classification",
+      "reviewTier": "operational",
+      "question": "Classify Unpaid suppliers.",
+      "answer": "Current liability, trade payables of 126,000 (supplier-confirmed).",
+      "evidence": [
+        "E06 06 Purchases Invoices and Goods Received.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D064",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Delivered NorthStar contract.",
+      "answer": "Revenue of 180,000 recognised 12 Feb on customer acceptance; fully collected (bank 'N STAR EVENTS'); 0 receivable.",
+      "evidence": [
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Revenue 180,000 recognised 12 Feb on acceptance; fully collected.",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": 0,
+          "cash": 0,
+          "assets": 0,
+          "liabilities": 0,
+          "equity": 0
+        },
+        "rationale": "Delivered and accepted; management also included it, so no adjustment."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Revenue of 180,000 recognised on 12 Feb (signed acceptance). Cash received 180,000; trade receivable 0 at 31 Aug. Management also included it at the invoice amount, so there is no change. Challenge considered: Alternative: an unrelated receipt, because bank says 'N STAR' and the CRM spells the customer three ways. Rejected: the amount and date match INV-26012 exactly. It is recognised by management too, so there is no adjustment.",
+      "studentReasoning": "The amount and date match INV-26012 exactly. The three spellings are the same customer. Management also included it, so there is no change.",
+      "statementEffect": {
+        "profit": 0,
+        "cash": 0,
+        "assets": 0,
+        "liabilities": 0,
+        "equity": 0
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D065",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Delivered Freedom contract.",
+      "answer": "Revenue of 200,000 recognised 18 Mar on acceptance; 142,000 collected; 58,000 trade receivable (aged over 5 months, monitor).",
+      "evidence": [
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Revenue 200,000 recognised 18 Mar on acceptance; 142,000 collected, 58,000 trade receivable (overdue ~5 months, monitor).",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": 0,
+          "cash": 0,
+          "assets": 0,
+          "liabilities": 0,
+          "equity": 0
+        },
+        "rationale": "Delivered and accepted; revenue is the invoice amount, not the cash received. Management sales figure already includes it."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Revenue of 200,000 recognised on 18 Mar (acceptance). Cash received 142,000; trade receivable 58,000 at 31 Aug. Management also included it at the invoice amount, so there is no change. Challenge considered: Alternative: recognise only the cash received (142,000), per management's 'cash received means sold' logic, or hold back revenue until paid. Rejected: control passed on acceptance on 18 Mar, and the 58,000 unpaid is a collectability question. There is no dispute or insolvency evidence, but it is aged over 5 months and should be monitored.",
+      "studentReasoning": "Control passed on acceptance. The unpaid 58,000 is a collectability question, not a revenue question, and there is no dispute or insolvency evidence. Management's 'cash received means sold' logic is rejected.",
+      "statementEffect": {
+        "profit": 0,
+        "cash": 0,
+        "assets": 0,
+        "liabilities": 0,
+        "equity": 0
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D066",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Completed Phoenix event.",
+      "answer": "Revenue of 100,000 recognised 29 Apr on completion of the event (customer email acceptance); 70,000 collected; 30,000 receivable.",
+      "evidence": [
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "medium",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Revenue 100,000 recognised on completion 29 Apr (customer email acceptance); 70,000 collected, 30,000 receivable.",
+        "confidence": "medium",
+        "statementEffect": {
+          "profit": 0,
+          "cash": 0,
+          "assets": 0,
+          "liabilities": 0,
+          "equity": 0
+        },
+        "rationale": "Service completed and accepted, although acceptance evidence is only an email; no difference vs management."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Revenue of 100,000 recognised on 29 Apr (customer email acceptance). Cash received 70,000; trade receivable 30,000 at 31 Aug. Management also included it at the invoice amount, so there is no change. Challenge considered: Alternative: defer revenue because final acceptance is only an email (weaker evidence). Rejected: the event was completed on 29 Apr and the customer has paid 70% (bank). The service was delivered, so revenue is recognised in full. Medium-high confidence.",
+      "studentReasoning": "The event was performed and the customer paid 70% through the bank, which corroborates the email acceptance. Confidence is medium because the acceptance is an email rather than a signed document.",
+      "statementEffect": {
+        "profit": 0,
+        "cash": 0,
+        "assets": 0,
+        "liabilities": 0,
+        "equity": 0
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D067",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Delivered Liberty order.",
+      "answer": "Revenue of 120,000 recognised 20 Jun on delivery; the customer wrote 'Accepted in full'. 95,000 collected; 25,000 receivable.",
+      "evidence": [
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Revenue 120,000 recognised on delivery 20 Jun; 95,000 collected, 25,000 receivable.",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": 0,
+          "cash": 0,
+          "assets": 0,
+          "liabilities": 0,
+          "equity": 0
+        },
+        "rationale": "Delivered and accepted in full; no difference vs management."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Revenue of 120,000 recognised on 20 Jun (delivery and written acceptance). Cash received 95,000; trade receivable 25,000 at 31 Aug. Management also included it at the invoice amount, so there is no change. Challenge considered: Alternative: split the mixed order or treat the glitter complaint as a return risk. Rejected: the customer wrote 'Accepted in full', and there is no return provision evidence.",
+      "studentReasoning": "There is written acceptance and no return or dispute evidence, so revenue is recognised in full.",
+      "statementEffect": {
+        "profit": 0,
+        "cash": 0,
+        "assets": 0,
+        "liabilities": 0,
+        "equity": 0
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D068",
+      "category": "classification",
+      "reviewTier": "material_judgment",
+      "question": "Classify Undelivered September events.",
+      "answer": "Not revenue in the period: contract liabilities of 90,000 until the events are performed on 15 and 24 Sep. This is the same adjustment as D041 and must not be counted twice.",
+      "evidence": [
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E02 02 Bank Export August.csv",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Not revenue: contract liability 90,000 until events are performed on 15 and 24 Sep (same adjustment as D041, not additive).",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": -90000,
+          "cash": 0,
+          "assets": 0,
+          "liabilities": 90000,
+          "equity": -90000
+        },
+        "rationale": "No performance obligation satisfied by 31 Aug. Same 90,000 adjustment as D041 - do not double count in a bridge."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Not revenue in the period. These are contract liabilities of 90,000 until delivery on 15 and 24 Sep. Any related costs incurred so far would be inventory or contract costs; none are evidenced. Challenge considered: Same economic adjustment as D041 (not additive). Considered a bill-and-hold style argument or recognising revenue proportionally to planning effort. Rejected: there is no delivery, no acceptance, and no evidence of progress towards satisfying the performance obligation.",
+      "studentReasoning": "No delivery, acceptance or progress towards the performance obligation is evidenced by 31 Aug. Revenue will be recognised in September when the events take place.",
+      "statementEffect": {
+        "profit": -90000,
+        "cash": 0,
+        "assets": 0,
+        "liabilities": 90000,
+        "equity": -90000
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D069",
+      "category": "classification",
+      "reviewTier": "operational",
+      "question": "Classify Loan principal payment.",
+      "answer": "Financing cash outflow of 19,000; reduces the loan liability (no P&L effect).",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E09 09 Loans Owner Card and Legal Problems.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D070",
+      "category": "classification",
+      "reviewTier": "operational",
+      "question": "Classify Equipment purchase.",
+      "answer": "Investing cash outflow of 80,000 (Pack-O-Matic 60,000 + photo booth 20,000), capitalised as PPE. The 10,000 repair is operating, not investing.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E08 08 Assets Repairs Leases Maybe.xlsx"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D071",
+      "category": "estimation",
+      "reviewTier": "material_judgment",
+      "question": "Estimate Closing bad-debt allowance/write-off and document the basis.",
+      "answer": "Specific write-off of 18,000 (R-17). No general allowance on the other open balances; a further downside of up to 113,000 on aged B2B balances (Freedom 58,000, Phoenix 30,000, Liberty 25,000) is disclosed as an uncertainty. Closing net receivables 168,000.",
+      "evidence": [
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E11 11 Evidence Received After Takeover.pdf"
+      ],
+      "confidence": "medium",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Specific write-off 18,000 (R-17) based on liquidator notice (no distribution). No general allowance booked for other overdue balances (Freedom 58,000, Phoenix 30,000, Liberty 25,000, web 55,000) because no default evidence; flagged as uncertainty (downside up to ~113,000 if B2B balances fail).",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": -18000,
+          "cash": 0,
+          "assets": -18000,
+          "liabilities": 0,
+          "equity": -18000
+        },
+        "rationale": "Management recorded no bad debt; external liquidator evidence supports a full write-off of R-17."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Specific write-off of 18,000 (R-17), with no general allowance. Net AR 168,000 = 58,000 Freedom + 30,000 Phoenix + 25,000 Liberty + 20,000 Stripe FSB + 35,000 WEB-NCB other. Challenge considered: Alternative: add a general or expected-credit-loss allowance on the aged Freedom (58,000, over 5 months) and Phoenix (30,000, 4 months) balances. Considered, because collection history is weak (only 70-80% paid). Not booked: no dispute, insolvency or default evidence exists for those customers, so an allowance would be invented. It is disclosed as an uncertainty range of 0 to 88,000 further exposure. Same adjustment as D057 (not additive).",
+      "studentReasoning": "The liquidator confirms no distribution for R-17. For the other customers there is no dispute, insolvency or default evidence, so an allowance would be invented; collection history is weak, though, so the exposure is disclosed. Same adjustment as D057 (not additive).",
+      "statementEffect": {
+        "profit": -18000,
+        "cash": 0,
+        "assets": -18000,
+        "liabilities": 0,
+        "equity": -18000
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D072",
+      "category": "estimation",
+      "reviewTier": "material_judgment",
+      "question": "Estimate Damaged inventory write-off and document the basis.",
+      "answer": "Write-off of 22,000 (the full carrying value of the basement stock). The 2,000 disposal quote is not provided at 31 Aug and is disclosed. Same adjustment as D058 (not additive).",
+      "evidence": [
+        "E05 05 Warehouse Count Marta Notes.pdf",
+        "E11 11 Evidence Received After Takeover.pdf"
+      ],
+      "confidence": "medium",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Write off 22,000 (full carrying value; NRV nil per independent assessment) plus 2,000 disposal cost accrual = 24,000 charge. Remaining saleable stock 121,000 at cost (count agrees with system).",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": -24000,
+          "cash": 0,
+          "assets": -22000,
+          "liabilities": 2000,
+          "equity": -24000
+        },
+        "rationale": "Physical existence is not value; stock is unsaleable and disposal has a cost. Alternative without disposal accrual: 22,000."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): 22,000: the full carrying value of basement stock, per the independent assessment (no saleable value). The 2,000 disposal cost is not provided for; it is disclosed. Challenge considered: Strongest alternative: provide an additional 2,000 disposal cost (total charge 24,000), because the quote relates to stock damaged before 31 Aug. Rejected as the base case: under IAS 37 there was no legal or constructive obligation to dispose at 31 Aug. The disposal is a post-takeover management decision and a future operating cost. NRV cannot take inventory below zero. It is a 2,000 profit risk if the auditor disagrees; low materiality. Same adjustment as D058 (not additive).",
+      "studentReasoning": "The independent assessment says the goods have no saleable value, so the write-down is 22,000. The first AI proposal added a 2,000 disposal accrual (total 24,000). I accepted the independent challenge instead: there was no obligation at 31 Aug, so it is a future operating cost; the amount is immaterial and is disclosed.",
+      "statementEffect": {
+        "profit": -22000,
+        "cash": 0,
+        "assets": -22000,
+        "liabilities": 0,
+        "equity": -22000
+      },
+      "changedFromAI": true,
+      "agentsAgree": false
+    },
+    {
+      "id": "D073",
+      "category": "estimation",
+      "reviewTier": "material_judgment",
+      "question": "Estimate Legal provision and document the basis.",
+      "answer": "Legal provision of 25,000 at counsel's best estimate; range 20,000 to 30,000 disclosed.",
+      "evidence": [
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E11 11 Evidence Received After Takeover.pdf"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Provision 25,000 at counsel best estimate (range 20,000-30,000).",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": -25000,
+          "cash": 0,
+          "assets": 0,
+          "liabilities": 25000,
+          "equity": -25000
+        },
+        "rationale": "Probable, reliably estimable obligation existing at 31 Aug; best estimate used, range disclosed."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): 25,000: counsel's best estimate (range 20,000-30,000). The range is disclosed. Challenge considered: Alternatives: the range bottom (20,000, optimistic) or top (30,000, prudent). Rejected: IAS 37 uses the best estimate of the single most likely outcome, and counsel gives 25,000 explicitly. The ±5,000 is disclosed. Same adjustment as D059 (not additive).",
+      "studentReasoning": "The best estimate of the most likely outcome is the measurement basis, and counsel states 25,000 explicitly. Choosing 20,000 would be optimistic and 30,000 overly prudent. Same adjustment as D059 (not additive).",
+      "statementEffect": {
+        "profit": -25000,
+        "cash": 0,
+        "assets": 0,
+        "liabilities": 25000,
+        "equity": -25000
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D074",
+      "category": "estimation",
+      "reviewTier": "material_judgment",
+      "question": "Estimate Period depreciation and document the basis.",
+      "answer": "Depreciation of 24,000 for Jan-Aug per the independent schedule (opening PPE 180,000, plus Pack-O-Matic and photo booth from 10 May). Closing accumulated depreciation 69,000; NBV 191,000.",
+      "evidence": [
+        "E08 08 Assets Repairs Leases Maybe.xlsx",
+        "E06 06 Purchases Invoices and Goods Received.pdf"
+      ],
+      "confidence": "medium",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Depreciation 24,000 for Jan-Aug per independent schedule (opening PPE 180,000 cost plus 80,000 additions from 10 May). No asset-level lives provided, so schedule accepted.",
+        "confidence": "medium",
+        "statementEffect": {
+          "profit": -24000,
+          "cash": 0,
+          "assets": -24000,
+          "liabilities": 0,
+          "equity": -24000
+        },
+        "rationale": "Management booked none; depreciation is required as assets are consumed, even though non-cash."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): 24,000 per the independent depreciation schedule, covering opening PPE (180,000) plus Pack-O-Matic and photo booth from 10 May. Closing accumulated depreciation is 69,000. Challenge considered: Alternative: compute depreciation from assumed lives, e.g. about 17,000 using 10-year and 5-year lives. Rejected: no useful-life or residual evidence exists, so a self-computed figure would be less supported than the independent schedule. If the repair had been capitalised, depreciation would change slightly; it is not capitalised. Uncertainty range is roughly 17,000-24,000. Same adjustment as D056 (not additive).",
+      "studentReasoning": "No useful lives or residual values are in evidence, so a self-computed figure (about 17,000 on assumed 10- and 5-year lives) would be less supported than the independent schedule. Range 17,000 to 24,000 disclosed. Same adjustment as D056.",
+      "statementEffect": {
+        "profit": -24000,
+        "cash": 0,
+        "assets": -24000,
+        "liabilities": 0,
+        "equity": -24000
+      },
+      "changedFromAI": false,
+      "agentsAgree": true
+    },
+    {
+      "id": "D075",
+      "category": "estimation",
+      "reviewTier": "material_judgment",
+      "question": "Estimate Closing inventory and document the basis.",
+      "answer": "Closing inventory 112,000 = opening 80,000 + purchases 459,000 - COGS 405,000 - damaged write-off 22,000. The physical count of good stock (121,000 at system value) is 9,000 higher; the difference is flagged for investigation and not booked.",
+      "evidence": [
+        "E05 05 Warehouse Count Marta Notes.pdf",
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E11 11 Evidence Received After Takeover.pdf",
+        "E01 01 USE THIS NUMBERS FINAL v9.xlsx"
+      ],
+      "confidence": "medium",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Closing inventory 121,000 = Finally Single materials 79,000 + Never Call Back materials 42,000 (count agrees with system); basement 22,000 excluded. Roll-forward gives 112,000; 9,000 unexplained surplus treated as opening difference (low-confidence item).",
+        "confidence": "medium",
+        "statementEffect": {
+          "profit": -22000,
+          "cash": 0,
+          "assets": -22000,
+          "liabilities": 0,
+          "equity": -22000
+        },
+        "rationale": "Management reported 143,000 including unsaleable stock. Effect shown for the damaged stock only (same 22,000 as D072, not additive)."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): 112,000 = opening 80,000 + purchases 459,000 - COGS 405,000 - damaged write-off 22,000. Versus management's 143,000. Challenge considered: Strongest alternative: 121,000 = physical count of good stock (79,000 + 42,000) at system value, excluding the damaged 22,000. Marta's count is recent, independent warehouse evidence, and this would cut COGS to 396,000 (+9,000 profit). Rejected as the base case: the count confirms quantities but values them at the system cost, which 'was not updated'. The 405,000 consumption is tied to valid delivered sales, and 459,000 purchases are third-party invoices. The 9,000 gap is left unreconciled and flagged for investigation. The effect against management's 143,000 is -31,000 (22,000 damaged + 9,000 roll-forward difference); the 22,000 overlaps with D058.",
+      "studentReasoning": "The first AI proposal used the count (121,000) and pushed the 9,000 gap into opening equity, which restates an opening balance without evidence. I chose the book roll-forward: every input (opening 80,000, third-party purchases, consumption tied to delivered sales) is evidenced, the count is valued at an un-updated system cost, and this is the more prudent figure. Upside if the count is right: +9,000 profit and inventory.",
+      "statementEffect": {
+        "profit": -31000,
+        "cash": 0,
+        "assets": -31000,
+        "liabilities": 0,
+        "equity": -31000
+      },
+      "changedFromAI": true,
+      "agentsAgree": false
+    },
+    {
+      "id": "D076",
+      "category": "estimation",
+      "reviewTier": "operational",
+      "question": "Estimate Closing receivables and document the basis.",
+      "answer": "Gross 186,000 (Freedom 58,000, Phoenix 30,000, Liberty 25,000, Stripe FSB 20,000, WEB-NCB 53,000) less R-17 18,000 = 168,000 net. Roll-forward: 35,000 + 960,000 - 809,000 - 18,000 = 168,000. Management's 186,000 excludes the bad debt.",
+      "evidence": [
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E02 02 Bank Export August.csv",
+        "E11 11 Evidence Received After Takeover.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D077",
+      "category": "estimation",
+      "reviewTier": "operational",
+      "question": "Estimate Repair versus improvement amount and document the basis.",
+      "answer": "Repair (expense) 10,000; improvement 0. Invoice R-771 says the work restored normal output with no capacity or life increase. The 60,000 Pack-O-Matic and 20,000 booth are new assets, not improvements.",
+      "evidence": [
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E08 08 Assets Repairs Leases Maybe.xlsx"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D078",
+      "category": "estimation",
+      "reviewTier": "operational",
+      "question": "Estimate Insurance expense and document the basis.",
+      "answer": "0 recorded, because no insurance evidence exists in the bank export or any other file. No amount is estimated or invented. Disclose it as an information gap and a possible uninsured risk.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E08 08 Assets Repairs Leases Maybe.xlsx",
+        "E00 00 BOARD ORDER READ FIRST.pdf"
+      ],
+      "confidence": "low",
+      "agentsAgree": true
+    },
+    {
+      "id": "D079",
+      "category": "estimation",
+      "reviewTier": "operational",
+      "question": "Estimate Interest payable and document the basis.",
+      "answer": "2,000 = 0 opening + 12,000 expense (loan schedule) - 10,000 paid (bank). Agrees with the bank confirmation of 2,000 accrued unpaid interest.",
+      "evidence": [
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E02 02 Bank Export August.csv",
+        "E11 11 Evidence Received After Takeover.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D080",
+      "category": "estimation",
+      "reviewTier": "operational",
+      "question": "Estimate Accrued payroll and document the basis.",
+      "answer": "32,000 = 15,000 opening + 248,000 expense - 231,000 paid (event 5,000 + sales 4,000 + office 8,000 = 17,000 increase). The founder bonus is excluded.",
+      "evidence": [
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx",
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D081",
+      "category": "estimation",
+      "reviewTier": "operational",
+      "question": "Estimate Customer deposit liability and document the basis.",
+      "answer": "90,000 = NB-SEP 60,000 + FF-SEP 30,000, received 28-29 Aug for September delivery.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E03 03 CRM Export Cleaned FINAL.xlsx"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D082",
+      "category": "estimation",
+      "reviewTier": "operational",
+      "question": "Estimate PPE closing cost and document the basis.",
+      "answer": "260,000 = 180,000 opening + 60,000 Pack-O-Matic + 20,000 photo booth. The 10,000 repair is excluded.",
+      "evidence": [
+        "E08 08 Assets Repairs Leases Maybe.xlsx",
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D083",
+      "category": "estimation",
+      "reviewTier": "operational",
+      "question": "Estimate Accumulated depreciation and document the basis.",
+      "answer": "69,000 = 45,000 opening + 24,000 period charge. Net book value 191,000.",
+      "evidence": [
+        "E08 08 Assets Repairs Leases Maybe.xlsx"
+      ],
+      "confidence": "medium",
+      "agentsAgree": true
+    },
+    {
+      "id": "D084",
+      "category": "estimation",
+      "reviewTier": "operational",
+      "question": "Estimate Supplier payable and document the basis.",
+      "answer": "126,000 = BoxWorks 25,000 + Glass & Drama 28,000 + Print Again 14,000 + Event Things 59,000 (independently confirmed). Roll-forward: 45,000 + 459,000 - 378,000 = 126,000.",
+      "evidence": [
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D085",
+      "category": "estimation",
+      "reviewTier": "operational",
+      "question": "Estimate Closing loan and document the basis.",
+      "answer": "131,000 = 100,000 + 50,000 - 19,000, agreed to the bank confirmation. Current/non-current split not evidenced.",
+      "evidence": [
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E02 02 Bank Export August.csv",
+        "E11 11 Evidence Received After Takeover.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D086",
+      "category": "estimation",
+      "reviewTier": "operational",
+      "question": "Estimate Physical COGS and document the basis.",
+      "answer": "405,000: physical product materials consumed on valid delivered sales (warehouse/purchase reconciliation). The damaged stock of 22,000 is a separate write-off. Alternative on a count basis: 396,000 (see D075).",
+      "evidence": [
+        "E05 05 Warehouse Count Marta Notes.pdf",
+        "E06 06 Purchases Invoices and Goods Received.pdf"
+      ],
+      "confidence": "medium",
+      "agentsAgree": true
+    },
+    {
+      "id": "D087",
+      "category": "estimation",
+      "reviewTier": "operational",
+      "question": "Estimate Service direct payroll and document the basis.",
+      "answer": "80,000 event delivery staff expense (cash 75,000), charged to cost of sales for Divorce Victory Party events.",
+      "evidence": [
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D088",
+      "category": "estimation",
+      "reviewTier": "operational",
+      "question": "Estimate Owner distributions and document the basis.",
+      "answer": "110,000 = villa 70,000 + owner card 40,000 (the same money labelled 'founder bonus'). Charged to equity; financing outflow.",
+      "evidence": [
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E02 02 Bank Export August.csv",
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D089",
+      "category": "estimation",
+      "reviewTier": "operational",
+      "question": "Estimate Net profit and document the basis.",
+      "answer": "Net profit 65,000 = revenue 960,000 - cost of sales 485,000 (materials 405,000 + event staff 80,000) = gross profit 475,000 - operating expenses 398,000 - interest 12,000. Management's 312,000 is rejected (it includes 90,000 undelivered deposits and the 50,000 loan, and omits costs). Plausible range about 38,000 to 86,000 (sum of the quantified uncertainties U2-U6) before any further receivable allowance (see uncertainties).",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E05 05 Warehouse Count Marta Notes.pdf",
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx",
+        "E08 08 Assets Repairs Leases Maybe.xlsx",
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E11 11 Evidence Received After Takeover.pdf"
+      ],
+      "confidence": "medium",
+      "agentsAgree": false
+    },
+    {
+      "id": "D090",
+      "category": "estimation",
+      "reviewTier": "operational",
+      "question": "Estimate Closing cash and document the basis.",
+      "answer": "60,000: bank export = bank confirmation = cash-flow roll-forward (80,000 + operating 139,000 - investing 80,000 - financing 79,000). Of this, 90,000 of receipts are customer deposits for undelivered September work; without them cash would have been negative 30,000.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E11 11 Evidence Received After Takeover.pdf",
+        "E01 01 USE THIS NUMBERS FINAL v9.xlsx"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D091",
+      "category": "board_decision",
+      "reviewTier": "material_judgment",
+      "question": "Approve corrected accounts before valuation",
+      "answer": "Yes. The board should approve only the corrected accounts (net profit 65,000, cash 60,000, equity 125,000, liabilities 406,000) as the basis for valuation, and withdraw the management pack (profit 312,000, cash 186,000). A full audit should follow.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E11 11 Evidence Received After Takeover.pdf",
+        "E01 01 USE THIS NUMBERS FINAL v9.xlsx",
+        "E00 00 BOARD ORDER READ FIRST.pdf",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "Yes - approve only the corrected accounts (net profit 63,000, cash 60,000, equity 132,000) as the basis for valuation; reject the management pack (profit 312,000, cash 186,000, inventory 143,000, AR 186,000 with no bad debt).",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": -249000,
+          "cash": -126000,
+          "assets": null,
+          "liabilities": null,
+          "equity": null
+        },
+        "rationale": "Management figures contain unearned revenue, a loan booked as income, omitted provisions/depreciation and inflated cash; valuation must rest on bank- and contract-supported numbers. Asset/liability effect vs management not determinable (no management balance sheet)."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): Yes. The board should adopt the corrected accounts (profit 65,000; cash 60,000; equity 125,000; liabilities 406,000) as the only basis for valuation, earn-out and financing discussions, and withdraw the management deck (profit 312,000, cash 186,000). Challenge considered: Alternative: wait for a full audit before adopting any figures. Partly accepted: an audit should follow. But the corrections rest on bank, third-party and counsel evidence, and relying on management's figures meanwhile is worse. Asset effect covers the identified management lines only (cash -126,000, AR -18,000, inventory -31,000). Management's liabilities and equity were never presented, so they are not quantified.",
+      "studentReasoning": "Every correction rests on bank, signed contract, third-party invoice or counsel evidence, and the management file admits it is unreconciled with formulas replaced by values. The decision is the same as the first AI proposal; the figures moved by 2,000 of profit and 7,000 of equity because of my overrides in D072/D075. Asset effect = cash -126,000, AR -18,000, inventory -31,000; management gave no liabilities or equity, so those are not quantified.",
+      "statementEffect": {
+        "profit": -247000,
+        "cash": -126000,
+        "assets": -175000,
+        "liabilities": null,
+        "equity": null
+      },
+      "changedFromAI": false,
+      "agentsAgree": false
+    },
+    {
+      "id": "D092",
+      "category": "board_decision",
+      "reviewTier": "operational",
+      "question": "Freeze owner-card access",
+      "answer": "Yes, immediately. 110,000 of owner spending (villa 70,000 + card 40,000) went through company accounts with no business purpose. Cancel the cards, require dual authorisation, and consider a recovery claim against the founder.",
+      "evidence": [
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E02 02 Bank Export August.csv",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D093",
+      "category": "board_decision",
+      "reviewTier": "operational",
+      "question": "Move September deposits to contract liabilities",
+      "answer": "Yes. Reclassify 90,000 from revenue to contract liabilities, and recognise revenue on delivery on 15 and 24 Sep. Ensure delivery happens; the cash is already committed to those events.",
+      "evidence": [
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E02 02 Bank Export August.csv",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D094",
+      "category": "board_decision",
+      "reviewTier": "operational",
+      "question": "Begin weekly 13-week cash forecast",
+      "answer": "Yes. Cash is 60,000 against 126,000 supplier payables, 32,000 unpaid wages, 2,000 interest, a 25,000 legal claim and 90,000 of deposits whose events must still be delivered. Current liabilities (275,000) exceed cash plus AR (228,000), and the business burned 20,000 even with 90,000 of deposits and 50,000 of new debt. This is a solvency and liquidity warning.",
+      "evidence": [
+        "E02 02 Bank Export August.csv",
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E07 07 Payroll Bonuses Contractors NEW.xlsx",
+        "E11 11 Evidence Received After Takeover.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D095",
+      "category": "board_decision",
+      "reviewTier": "operational",
+      "question": "Stop credit sales to insolvent/high-risk customers",
+      "answer": "Yes. R-17 cost 18,000, and 113,000 of B2B invoices remain partly unpaid (Freedom 58,000, Phoenix 30,000, Liberty 25,000). Introduce credit checks, deposits and payment terms, and chase aged balances.",
+      "evidence": [
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E11 11 Evidence Received After Takeover.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D096",
+      "category": "board_decision",
+      "reviewTier": "operational",
+      "question": "Dispose of damaged stock",
+      "answer": "Yes. Dispose of the 22,000 of wet basement stock (already written off to nil at 31 Aug). The quoted 2,000 disposal cost is a September operating cost, not provided at 31 Aug. Fix the leaking pipe, and check whether any insurance cover exists; none is evidenced.",
+      "evidence": [
+        "E05 05 Warehouse Count Marta Notes.pdf",
+        "E11 11 Evidence Received After Takeover.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D097",
+      "category": "board_decision",
+      "reviewTier": "operational",
+      "question": "Investigate management override and duplicate sources",
+      "answer": "Yes. Documented overrides include deposits booked as sales, the loan booked as income, the villa relabelled as marketing then bonus, the omitted legal claim, the retained bad debt and damaged stock, and a 126,000 cash overstatement. Investigate the 9,000 inventory count/book gap and the 45,000 Event Things payment for pre-2026 invoices. Preserve the email and WhatsApp records.",
+      "evidence": [
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf",
+        "E01 01 USE THIS NUMBERS FINAL v9.xlsx",
+        "E05 05 Warehouse Count Marta Notes.pdf",
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E09 09 Loans Owner Card and Legal Problems.pdf"
+      ],
+      "confidence": "high",
+      "agentsAgree": true
+    },
+    {
+      "id": "D098",
+      "category": "board_decision",
+      "reviewTier": "operational",
+      "question": "Renegotiate supplier terms",
+      "answer": "Yes. 126,000 is owed to suppliers against 60,000 cash, and Event Things (59,000) is the largest. Agree payment plans or extended terms to avoid a supply disruption for the September events.",
+      "evidence": [
+        "E06 06 Purchases Invoices and Goods Received.pdf",
+        "E02 02 Bank Export August.csv"
+      ],
+      "confidence": "medium",
+      "agentsAgree": true
+    },
+    {
+      "id": "D099",
+      "category": "board_decision",
+      "reviewTier": "operational",
+      "question": "Continue core Finally Single and event operations",
+      "answer": "Yes, conditionally. Delivered revenue is real (960,000; gross margin about 49%) and operating cash flow is positive (139,000, though flattered by 90,000 of deposits). Finally Single web sales are the largest, best-collected line. Continue while imposing cash controls. Review the Never Call Back web channel, which has poor collection (37,000 of 90,000) and the R-17 loss.",
+      "evidence": [
+        "E03 03 CRM Export Cleaned FINAL.xlsx",
+        "E02 02 Bank Export August.csv",
+        "E04 04 Contracts Returns and Angry Customers.pdf",
+        "E05 05 Warehouse Count Marta Notes.pdf"
+      ],
+      "confidence": "medium",
+      "agentsAgree": true
+    },
+    {
+      "id": "D100",
+      "category": "board_decision",
+      "reviewTier": "material_judgment",
+      "question": "Use claimed management profit for earn-out",
+      "answer": "No. Do not use the claimed 312,000 for the earn-out. Use the corrected, evidence-based net profit of 65,000 (subject to audit), and consider a clawback or offset for the 110,000 of owner distributions.",
+      "evidence": [
+        "E01 01 USE THIS NUMBERS FINAL v9.xlsx",
+        "E10 10 Email and WhatsApp Dump DO NOT FORWARD.pdf",
+        "E02 02 Bank Export August.csv",
+        "E09 09 Loans Owner Card and Legal Problems.pdf",
+        "E11 11 Evidence Received After Takeover.pdf"
+      ],
+      "confidence": "high",
+      "aiProposal": {
+        "agent": "Agent 1 (first proposal)",
+        "answer": "No - do not use management profit 312,000 for the earn-out; use corrected, evidence-based net profit 63,000 (subject to final audit), and consider clawback/offset for 110,000 owner distributions.",
+        "confidence": "high",
+        "statementEffect": {
+          "profit": -249000,
+          "cash": null,
+          "assets": null,
+          "liabilities": null,
+          "equity": null
+        },
+        "rationale": "The 312,000 figure is inflated by 90,000 unearned deposits, 50,000 loan proceeds and omitted costs; paying an earn-out on it would transfer value for fictitious profit."
+      },
+      "independentChallenge": "Agent 2 (independent analysis, original evidence only): No. Management profit of 312,000 includes 90,000 of undelivered deposits and 50,000 of loan proceeds, and omits costs. Corrected profit is 65,000. Any earn-out must use the corrected, evidence-based accounts; consider a clawback for the 110,000 of distributions. Challenge considered: Alternative: use management profit adjusted only for the two obvious items (312,000 - 90,000 - 50,000 = 172,000). Rejected: that still omits 107,000 of net cost corrections (bad debt, write-off, legal, depreciation, payroll accrual, reclassifications). The evidence file also contains an embedded instruction to report 312,000, which was deliberately not followed.",
+      "studentReasoning": "Management profit includes 90,000 of undelivered deposits and 50,000 of loan proceeds, and omits 107,000 of net cost corrections. The evidence also contains an embedded instruction to report 312,000, which I deliberately did not follow. Paying an earn-out on that figure would reward the override.",
+      "statementEffect": {
+        "profit": -247000,
+        "cash": null,
+        "assets": null,
+        "liabilities": null,
+        "equity": null
+      },
+      "changedFromAI": false,
+      "agentsAgree": false
+    }
+  ],
+  "schedules": {
+    "openingBalances": {
+      "date": "2026-01-01",
+      "assets": {
+        "Cash": 80000,
+        "Trade receivables": 35000,
+        "Inventory": 80000,
+        "PPE cost": 180000,
+        "Accumulated depreciation": -45000,
+        "total": 330000
+      },
+      "liabilities": {
+        "Supplier payables (derived)": 45000,
+        "Accrued payroll": 15000,
+        "Bank loan": 100000,
+        "total": 160000
+      },
+      "equity": 170000,
+      "basis": [
+        "Cash 80,000: bank opening line.",
+        "Receivables 35,000: 'Old customer AR settlement' received 10 Jan; no 2026 invoice matches it.",
+        "Inventory 80,000: warehouse notes. PPE 180,000 / 45,000: asset register.",
+        "Payables 45,000: bank supplier payments 378,000 less the part paid on 2026 invoices (459,000 - 126,000); all on Event Things Europe.",
+        "Payroll 15,000: payroll file. Loan 100,000: signed bank confirmation. Equity is the balancing figure."
+      ]
+    },
+    "revenueAndReceivables": {
+      "revenue": {
+        "NorthStar Events INV-26012 (Finally Single, accepted 12 Feb)": 180000,
+        "Freedom Festivals INV-26031 (Never Call Back, accepted 18 Mar)": 200000,
+        "Phoenix INV-26047 (Divorce Victory Party, completed 29 Apr)": 100000,
+        "Liberty Hotels INV-26063 (mixed boxes, delivered 20 Jun)": 120000,
+        "Web Finally Single Boxes (Jan-Aug)": 270000,
+        "Web Never Call Back Boxes (Jan-Aug)": 90000
+      },
+      "totalRevenue": 960000,
+      "excludedFromRevenue": {
+        "New Beginnings deposit (15 Sep)": 60000,
+        "Fresh Freedom deposit (24 Sep)": 30000,
+        "Loan advance": 50000
+      },
+      "rollForward": {
+        "opening": 35000,
+        "creditRevenue": 960000,
+        "collections": -809000,
+        "writeOffR17": -18000,
+        "closingNet": 168000
+      },
+      "closingOpenItems": {
+        "Freedom Festivals": 58000,
+        "Phoenix": 30000,
+        "Liberty Hotels": 25000,
+        "Stripe platform - Finally Single": 20000,
+        "Web Never Call Back (incl. R-17 18k)": 53000
+      },
+      "closingGross": 186000
+    },
+    "inventoryAndCogs": {
+      "rollForward": {
+        "opening": 80000,
+        "purchases": 459000,
+        "cogs": -405000,
+        "damagedWriteOff": -22000,
+        "closing": 112000
+      },
+      "count": {
+        "Finally Single materials": 79000,
+        "Never Call Back materials": 42000,
+        "Basement stock (unsaleable)": 22000,
+        "systemTotal": 143000,
+        "goodStockCounted": 121000,
+        "unexplainedCountSurplus": 9000
+      },
+      "purchasesBySupplier": {
+        "BoxWorks": 130000,
+        "Glass & Drama Ltd.": 120000,
+        "Print Again SIA": 95000,
+        "Event Things Europe": 114000
+      }
+    },
+    "payroll": {
+      "lines": [
+        {
+          "department": "Event delivery staff",
+          "expense": 80000,
+          "cashPaid": 75000,
+          "unpaid": 5000,
+          "classification": "Cost of sales (direct service)"
+        },
+        {
+          "department": "Sales and partnerships",
+          "expense": 72000,
+          "cashPaid": 68000,
+          "unpaid": 4000,
+          "classification": "Operating expense - selling"
+        },
+        {
+          "department": "Office and finance",
+          "expense": 96000,
+          "cashPaid": 88000,
+          "unpaid": 8000,
+          "classification": "Operating expense - administrative"
+        }
+      ],
+      "rollForward": {
+        "opening": 15000,
+        "expense": 248000,
+        "paid": -231000,
+        "closing": 32000
+      },
+      "excluded": {
+        "Founder 'bonus' = villa + owner card (distribution, same cash)": 110000
+      }
+    },
+    "operatingExpenses": {
+      "lines": {
+        "Sales and partnerships payroll": 72000,
+        "Office and finance payroll": 96000,
+        "Rent": 48000,
+        "Marketing (Meta, TikTok, influencers)": 55000,
+        "Software subscriptions": 16000,
+        "Utilities": 12000,
+        "Repairs and maintenance (R-771)": 10000,
+        "Depreciation": 24000,
+        "Bad debt write-off (R-17)": 18000,
+        "Inventory write-off (water-damaged stock)": 22000,
+        "Legal provision (former employee claim)": 25000
+      },
+      "total": 398000
+    },
+    "ppeAndDepreciation": {
+      "cost": {
+        "opening": 180000,
+        "Pack-O-Matic 9000 (10 May)": 60000,
+        "Regret Photo Booth (10 May)": 20000,
+        "closing": 260000
+      },
+      "accumulatedDepreciation": {
+        "opening": 45000,
+        "charge": 24000,
+        "closing": 69000
+      },
+      "netBookValue": 191000,
+      "expensedNotCapitalised": {
+        "Repair R-771 (belt, calibration)": 10000
+      }
+    },
+    "debtAndInterest": {
+      "principal": {
+        "opening": 100000,
+        "advance1Mar": 50000,
+        "repaid": -19000,
+        "closing": 131000,
+        "bankConfirmation": 131000
+      },
+      "interest": {
+        "openingPayable": 0,
+        "expense": 12000,
+        "paid": -10000,
+        "closingPayable": 2000,
+        "bankConfirmation": 2000
+      }
+    },
+    "suppliers": {
+      "lines": [
+        {
+          "supplier": "BoxWorks",
+          "invoiced": 130000,
+          "paid": 105000,
+          "unpaidConfirmed": 25000
+        },
+        {
+          "supplier": "Glass & Drama Ltd.",
+          "invoiced": 120000,
+          "paid": 92000,
+          "unpaidConfirmed": 28000
+        },
+        {
+          "supplier": "Print Again SIA",
+          "invoiced": 95000,
+          "paid": 81000,
+          "unpaidConfirmed": 14000
+        },
+        {
+          "supplier": "Event Things Europe",
+          "invoiced": 114000,
+          "paid": 100000,
+          "unpaidConfirmed": 59000
+        }
+      ],
+      "rollForward": {
+        "openingDerived": 45000,
+        "purchases": 459000,
+        "paid": -378000,
+        "closing": 126000
+      }
+    },
+    "equityAndDistributions": {
+      "opening": 170000,
+      "netProfit": 65000,
+      "distributions": {
+        "Sunset Villa reservation": -70000,
+        "Chairman's platinum card": -40000
+      },
+      "closing": 125000
+    },
+    "provisions": {
+      "Legal claim (former employee)": {
+        "amount": 25000,
+        "range": [
+          20000,
+          30000
+        ],
+        "basis": "Counsel best estimate, probable"
+      }
+    }
+  },
+  "statements": {
+    "profitAndLoss": {
+      "period": "1 Jan 2026 - 31 Aug 2026",
+      "currency": "EUR",
+      "revenue": {
+        "lines": {
+          "NorthStar Events INV-26012 (Finally Single, accepted 12 Feb)": 180000,
+          "Freedom Festivals INV-26031 (Never Call Back, accepted 18 Mar)": 200000,
+          "Phoenix INV-26047 (Divorce Victory Party, completed 29 Apr)": 100000,
+          "Liberty Hotels INV-26063 (mixed boxes, delivered 20 Jun)": 120000,
+          "Web Finally Single Boxes (Jan-Aug)": 270000,
+          "Web Never Call Back Boxes (Jan-Aug)": 90000
+        },
+        "total": 960000
+      },
+      "costOfSales": {
+        "lines": {
+          "Physical product materials consumed": 405000,
+          "Event delivery staff (direct service payroll)": 80000
+        },
+        "total": 485000
+      },
+      "grossProfit": 475000,
+      "operatingExpenses": {
+        "lines": {
+          "Sales and partnerships payroll": 72000,
+          "Office and finance payroll": 96000,
+          "Rent": 48000,
+          "Marketing (Meta, TikTok, influencers)": 55000,
+          "Software subscriptions": 16000,
+          "Utilities": 12000,
+          "Repairs and maintenance (R-771)": 10000,
+          "Depreciation": 24000,
+          "Bad debt write-off (R-17)": 18000,
+          "Inventory write-off (water-damaged stock)": 22000,
+          "Legal provision (former employee claim)": 25000
+        },
+        "total": 398000
+      },
+      "operatingProfit": 77000,
+      "interestExpense": 12000,
+      "netProfit": 65000,
+      "managementBridge": [
+        {
+          "line": "Management profit (takeover deck)",
+          "amount": 312000
+        },
+        {
+          "line": "Remove September deposits from sales",
+          "amount": -90000
+        },
+        {
+          "line": "Remove loan booked as 'strategic bank income'",
+          "amount": -50000
+        },
+        {
+          "line": "Net cost corrections (management costs 788,000 vs corrected 895,000)",
+          "amount": -107000
+        },
+        {
+          "line": "Corrected net profit",
+          "amount": 65000
+        }
+      ]
+    },
+    "cashFlow": {
+      "period": "1 Jan 2026 - 31 Aug 2026",
+      "method": "Direct, reconciled to indirect",
+      "operating": {
+        "lines": {
+          "Receipts from customers - opening receivable": 35000,
+          "Receipts from customers - 2026 invoices": 774000,
+          "Customer deposits for September events": 90000,
+          "Paid to suppliers": -378000,
+          "Paid to employees": -231000,
+          "Rent": -48000,
+          "Marketing": -55000,
+          "Software": -16000,
+          "Utilities": -12000,
+          "Repairs": -10000,
+          "Interest paid": -10000
+        },
+        "total": 139000
+      },
+      "indirectReconciliation": {
+        "lines": {
+          "Net profit": 65000,
+          "Add back depreciation": 24000,
+          "Increase in receivables (net)": -133000,
+          "Increase in inventory (net of write-off)": -32000,
+          "Increase in supplier payables": 81000,
+          "Increase in accrued payroll": 17000,
+          "Increase in interest payable": 2000,
+          "Increase in customer deposits (contract liabilities)": 90000,
+          "Increase in legal provision": 25000
+        },
+        "total": 139000
+      },
+      "investing": {
+        "lines": {
+          "Pack-O-Matic 9000 (A-910)": -60000,
+          "Regret Photo Booth (P-404)": -20000
+        },
+        "total": -80000
+      },
+      "financing": {
+        "lines": {
+          "Bank loan advance": 50000,
+          "Loan principal repaid": -19000,
+          "Owner distributions (villa 70,000 + card 40,000)": -110000
+        },
+        "total": -79000
+      },
+      "netChange": -20000,
+      "openingCash": 80000,
+      "closingCash": 60000,
+      "note": "Interest paid is classified as operating (policy choice). Distributions are financing."
+    },
+    "balanceSheet": {
+      "date": "2026-08-31",
+      "assets": {
+        "lines": {
+          "Cash": 60000,
+          "Trade receivables (net of R-17 write-off)": 168000,
+          "Inventory": 112000,
+          "PPE cost": 260000,
+          "Accumulated depreciation": -69000
+        },
+        "total": 531000,
+        "current": 340000,
+        "nonCurrent": 191000
+      },
+      "liabilities": {
+        "lines": {
+          "Supplier payables": 126000,
+          "Accrued payroll": 32000,
+          "Interest payable": 2000,
+          "Customer deposits (contract liabilities)": 90000,
+          "Legal provision": 25000,
+          "Bank loan": 131000
+        },
+        "total": 406000,
+        "currentExcludingLoan": 275000,
+        "note": "Loan maturity is not evidenced; the current/non-current split is unknown."
+      },
+      "equity": {
+        "lines": {
+          "Opening equity (derived)": 170000,
+          "Net profit": 65000,
+          "Owner distributions": -110000
+        },
+        "total": 125000
+      },
+      "liabilitiesAndEquity": 531000
+    }
+  },
+  "reconciliations": [
+    {
+      "name": "Balance sheet balances",
+      "calculation": "Assets 531,000 = Liabilities 406,000 + Equity 125,000",
+      "difference": 0,
+      "status": "pass"
+    },
+    {
+      "name": "Closing cash = bank = cash-flow roll-forward",
+      "calculation": "Bank export 60,000; bank confirmation 60,000; roll-forward 80,000 +139,000 -80,000 -79,000 = 60,000",
+      "difference": 0,
+      "status": "pass"
+    },
+    {
+      "name": "Revenue and receivables reconcile",
+      "calculation": "Opening AR 35,000 + revenue 960,000 - collections 809,000 - write-off 18,000 = 168,000 (CRM open items 186,000 less R-17)",
+      "difference": 0,
+      "status": "pass"
+    },
+    {
+      "name": "Inventory and COGS reconcile",
+      "calculation": "Opening 80,000 + purchases 459,000 - COGS 405,000 - write-off 22,000 = 112,000",
+      "difference": 0,
+      "status": "pass"
+    },
+    {
+      "name": "PPE cost and accumulated depreciation reconcile",
+      "calculation": "Cost 180,000 + 80,000 = 260,000; acc. dep. 45,000 + 24,000 = 69,000; NBV 191,000",
+      "difference": 0,
+      "status": "pass"
+    },
+    {
+      "name": "Debt principal, interest expense, paid and payable reconcile",
+      "calculation": "Loan 100,000 + 50,000 - 19,000 = 131,000 (bank confirms 131,000); interest 0 + 12,000 - 10,000 = 2,000 (bank confirms 2,000)",
+      "difference": 0,
+      "status": "pass"
+    },
+    {
+      "name": "Payroll liability reconciles",
+      "calculation": "Opening 15,000 + expense 248,000 - paid 231,000 = 32,000",
+      "difference": 0,
+      "status": "pass"
+    },
+    {
+      "name": "Supplier payables reconcile",
+      "calculation": "Opening (derived) 45,000 + purchases 459,000 - paid 378,000 = 126,000 (supplier-confirmed)",
+      "difference": 0,
+      "status": "pass"
+    },
+    {
+      "name": "Equity roll-forward",
+      "calculation": "Opening 170,000 + profit 65,000 - distributions 110,000 = 125,000",
+      "difference": 0,
+      "status": "pass"
+    },
+    {
+      "name": "Direct = indirect operating cash flow",
+      "calculation": "Direct 139,000 = indirect 139,000",
+      "difference": 0,
+      "status": "pass"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "U1",
+      "item": "Aged B2B receivables (Freedom 58k, Phoenix 30k, Liberty 25k)",
+      "base": 0,
+      "low": -113000,
+      "high": 0,
+      "profitEffectRange": "0 to -113,000",
+      "confidence": "medium",
+      "decisions": [
+        "D071",
+        "D076",
+        "D095"
+      ],
+      "note": "No default evidence, so no allowance is booked; collection history is weak."
+    },
+    {
+      "id": "U2",
+      "item": "Inventory count surplus",
+      "base": 0,
+      "low": 0,
+      "high": 9000,
+      "profitEffectRange": "0 to +9,000",
+      "confidence": "low",
+      "decisions": [
+        "D048",
+        "D075",
+        "D086"
+      ],
+      "note": "Count of good stock 121k vs book 112k. Investigate valuation and consumption records."
+    },
+    {
+      "id": "U3",
+      "item": "Legal claim estimate",
+      "base": 0,
+      "low": -5000,
+      "high": 5000,
+      "profitEffectRange": "-5,000 to +5,000",
+      "confidence": "high",
+      "decisions": [
+        "D059",
+        "D073"
+      ],
+      "note": "Counsel range 20k-30k around the 25k best estimate."
+    },
+    {
+      "id": "U4",
+      "item": "Depreciation (no useful lives evidenced)",
+      "base": 0,
+      "low": 0,
+      "high": 7000,
+      "profitEffectRange": "0 to +7,000",
+      "confidence": "medium",
+      "decisions": [
+        "D056",
+        "D074"
+      ],
+      "note": "Indicative recomputation about 17k vs schedule 24k."
+    },
+    {
+      "id": "U5",
+      "item": "Photo booth classification",
+      "base": 0,
+      "low": -20000,
+      "high": 0,
+      "profitEffectRange": "about -20,000 if expensed",
+      "confidence": "medium",
+      "decisions": [
+        "D044"
+      ],
+      "note": "Capitalised; would be marketing expense if not a durable asset."
+    },
+    {
+      "id": "U6",
+      "item": "Disposal cost of damaged stock",
+      "base": 0,
+      "low": -2000,
+      "high": 0,
+      "profitEffectRange": "0 to -2,000",
+      "confidence": "medium",
+      "decisions": [
+        "D058",
+        "D072",
+        "D096"
+      ],
+      "note": "Not provided at 31 Aug; a September cost."
+    },
+    {
+      "id": "U7",
+      "item": "Insurance",
+      "base": 0,
+      "low": null,
+      "high": null,
+      "profitEffectRange": "unknown",
+      "confidence": "low",
+      "decisions": [
+        "D034",
+        "D060",
+        "D078"
+      ],
+      "note": "No policy, payment or prepayment evidence anywhere. The company may be uninsured; this is unresolved."
+    },
+    {
+      "id": "U8",
+      "item": "Derived opening balances (AR 35k, AP 45k)",
+      "base": 0,
+      "low": null,
+      "high": null,
+      "profitEffectRange": "equity only",
+      "confidence": "medium",
+      "decisions": [
+        "D005",
+        "D013"
+      ],
+      "note": "Derived from bank receipts and payments; the round opening equity of 170k supports them. Request the 2025 closing balance sheet."
+    },
+    {
+      "id": "U9",
+      "item": "Monthly payroll split and loan maturity",
+      "base": 0,
+      "low": null,
+      "high": null,
+      "profitEffectRange": "none on period totals",
+      "confidence": "low",
+      "decisions": [
+        "D014",
+        "D015",
+        "D016",
+        "D017",
+        "D018",
+        "D019",
+        "D020",
+        "D021",
+        "D085"
+      ],
+      "note": "Bank shows one combined payroll payment; loan current/non-current split not evidenced."
+    }
+  ],
+  "boardRecommendation": {
+    "headline": "Corrected net profit is 65,000, not 312,000. Cash is 60,000, not 186,000.",
+    "correctedProfit": 65000,
+    "managementProfit": 312000,
+    "closingCash": 60000,
+    "managementCash": 186000,
+    "profitRange": {
+      "low": 38000,
+      "base": 65000,
+      "high": 86000,
+      "note": "Low = legal -5k, disposal -2k, photo booth expensed -20k; high = count surplus +9k, depreciation +7k, legal +5k. Excludes a possible further allowance on aged B2B receivables (up to -113,000)."
+    },
+    "workingCapitalWarning": "Cash 60,000 plus net receivables 168,000 = 228,000 against current liabilities of 275,000 excluding the 131,000 bank loan (payables 126k, payroll 32k, interest 2k, September deposits 90k, legal 25k). Cash fell 20,000 in the period even after 90,000 of customer deposits and 50,000 of new borrowing, and 110,000 left the company to the founder. Without the deposits, cash would be negative. This is a liquidity and solvency warning.",
+    "controlActions": [
+      "Freeze the owner card and founder payment authority now; dual approval for all payments (D092).",
+      "Recognise revenue only on delivery; move the 90,000 September deposits to contract liabilities (D093).",
+      "Start a weekly 13-week cash forecast and track it against actuals (D094).",
+      "Credit checks and deposits for B2B customers; chase the 113,000 aged balances (D095).",
+      "Investigate management override: preserve emails and WhatsApp messages, and reconcile inventory and the opening supplier balance (D097)."
+    ],
+    "decisionOnCoreBusiness": "Continue the core Finally Single and event operations, under new controls. Delivered revenue of 960,000 is real and bank-supported, gross margin is about 49%, and operating cash flow is positive. Deliver the September events that customers have already paid for, renegotiate supplier terms (126,000 owed), and review the Never Call Back web channel (37,000 collected of 90,000, and the R-17 loss).",
+    "earnOut": "Do not use the claimed management profit for the earn-out (D100)."
+  },
+  "keyFigures": {
+    "netProfit": 65000,
+    "closingCash": 60000,
+    "totalAssets": 531000,
+    "totalLiabilities": 406000,
+    "closingEquity": 125000,
+    "openingEquity": 170000,
+    "revenue": 960000,
+    "ownerDistributions": 110000
+  }
+}

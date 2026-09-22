@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assessor Review</title>
+<meta name="description" content="Compact assessor view for DPI-HT-01: agent disagreements, student overrides, low-confidence decisions and unresolved uncertainty.">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="review">
+<header class="top"><div class="inner">
+  <h1>Assessor review · DPI-HT-01</h1>
+  <nav><a href="/">Main page</a><a href="/submission.json">/submission.json</a></nav>
+</div></header>
+<main>
+  <section><p class="lead" id="student"></p><div id="kpis"></div></section>
+  <div class="grid2">
+    <section><h2>Agent disagreements</h2><div id="disagree"></div></section>
+    <section><h2>Low-confidence decisions</h2><div id="low"></div></section>
+  </div>
+  <section><h2>Student overrides of the first AI proposal</h2><div id="overrides"></div></section>
+  <section><h2>Unresolved uncertainty</h2><div id="unresolved"></div></section>
+  <section><h2>Reconciliations</h2><div id="recon" class="scroll"></div></section>
+  <section><h2>Board recommendation</h2><div id="board"></div></section>
+  <section><h2>AI review trail: material judgments</h2><div id="trail"></div></section>
+  <section><h2>Operational decisions</h2><div id="all"></div></section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Divorce Party Reconstruction</title>
+<meta name="description" content="DPI-HT-01: reconstructed financial statements, 100 certified decisions and board recommendation for Divorce Party International Ltd. at 31 August 2026.">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="main">
+<header class="top"><div class="inner">
+  <h1>Divorce Party International · 31 Aug 2026</h1>
+  <nav>
+    <a href="#board-sec">Board</a><a href="#statements">Statements</a><a href="#recon-sec">Reconciliations</a><a href="#schedules-sec">Schedules</a>
+    <a href="#trail-h">AI review trail</a><a href="#decisions-sec">Decisions</a><a href="#uncertainty-sec">Uncertainty</a><a href="#evidence-sec">Evidence</a>
+    <a href="/review">/review</a><a href="/submission.json">/submission.json</a>
+  </nav>
+</div></header>
+<main>
+  <section>
+    <h2>Corrected reconstruction</h2>
+    <p class="lead" id="student"></p>
+    <div id="kpis"></div>
+  </section>
+  <section id="board-sec"><h2 id="board-h">Board recommendation</h2><div id="board"></div></section>
+  <section id="statements">
+    <h2>Financial statements (EUR, 1 Jan – 31 Aug 2026)</h2>
+    <div class="grid2">
+      <div><h3>Profit and loss</h3><div id="pl" class="scroll"></div></div>
+      <div><h3>Cash flow</h3><div id="cf" class="scroll"></div></div>
+      <div><h3>Balance sheet at 31 Aug 2026</h3><div id="bs" class="scroll"></div></div>
+    </div>
+  </section>
+  <section id="recon-sec"><h2>Reconciliations</h2><div id="recon" class="scroll"></div></section>
+  <section id="schedules-sec"><h2>Supporting schedules</h2><div id="schedules"></div></section>
+  <section>
+    <h2 id="trail-h">AI review trail: 25 material judgments</h2>
+    <p class="lead">For each judgment: the first AI proposal (Agent 1), the independent analysis by Agent 2 (which saw only the original evidence), and the certified final answer with its reasoning and statement effect.</p>
+    <div id="trail"></div>
+  </section>
+  <section id="decisions-sec">
+    <h2>All 100 decisions</h2>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search ID, question, answer or evidence">
+      <select id="tier"><option value="">All tiers</option><option value="operational">Operational</option><option value="material_judgment">Material judgment</option></select>
+      <select id="cat"></select>
+      <span id="count" class="muted"></span>
+    </div>
+    <div id="decisions"></div>
+  </section>
+  <section id="uncertainty-sec"><h2>Material uncertainty</h2><div id="uncertainty"></div></section>
+  <section id="evidence-sec"><h2>Evidence register</h2><div id="evidence"></div></section>
+</main>
+<footer>DPI-HT-01 · static case data · no login or database</footer>
+<script src="/app.js"></script>
+</body>
+</html>
